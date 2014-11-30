@@ -3,7 +3,7 @@
       package="kr.tangomike.frame360.sec201410.alternative2560"
       android:versionName="1.0" android:versionCode="4">
       
-     	<uses-sdk android:minSdkVersion="12" android:targetSdkVersion="23"></uses-sdk>
+     	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="23"></uses-sdk>
 	
 	<uses-permission android:name="android.permission.INTERNET" />
     
@@ -20,7 +20,7 @@
         <activity
             android:name="MainActivity01"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:screenOrientation="reversePortait"
+            android:screenOrientation="reversePortrait"
             android:label="@string/app_name"
             android:icon="@drawable/icon_72">
             
@@ -37,7 +37,7 @@
             android:name="MainActivity02"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
             
-            android:screenOrientation="reversePortait">
+            android:screenOrientation="reversePortrait">
             
             
         </activity>
@@ -45,17 +45,17 @@
         <activity
             android:name="LoadActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:screenOrientation="reversePortait"
+            android:screenOrientation="reversePortrait"
             >
         </activity>
 
    		<activity 
    		    android:name="SettingsActivity"
-   		    android:screenOrientation="reversePortait">
+   		    android:screenOrientation="reversePortrait">
    		</activity>
 		<activity 
 		    android:name="HelpActivity"
-		    android:screenOrientation="reversePortait">
+		    android:screenOrientation="reversePortrait">
 		</activity>
       
     </application>

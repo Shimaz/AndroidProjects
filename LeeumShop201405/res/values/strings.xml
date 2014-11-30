@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LeeumShop Catalog</string>
+    <string name="action_settings">Settings</string>
+    <string name="str_btn_camera">Camera Timeline</string>
+    <string name="str_btn_sugimoto">Sugimoto Timeline</string>
+    <string name="str_btn_home">Home</string>
+
+    <string name="desc">Content Description</string>
+</resources>

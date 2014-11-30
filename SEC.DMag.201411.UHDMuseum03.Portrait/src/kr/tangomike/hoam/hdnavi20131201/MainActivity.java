@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
         SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
       
         /* get Values */
-        oscIP = settings.getString("myIP", "192.168.0.198");
+        oscIP = settings.getString("myIP", "192.168.0.197");
         oscPort = settings.getInt("myPort", 3333);
         drawAdditionalInfo = settings.getBoolean("ExtraInfo", false);
         sendPeriodicUpdates = settings.getBoolean("VerboseTUIO", true);

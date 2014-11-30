@@ -1,0 +1,138 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    tools:context=".HomeActivity" 
+    android:id="@+id/layout_main"
+    >
+    
+    
+    
+    <ImageView
+        android:id="@+id/iv_bg01"
+        android:layout_width="1430dp"
+        android:layout_height="900dp"
+        android:layout_marginLeft="-75dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="-75dp"
+        android:layout_marginBottom="-50dp"
+        android:contentDescription="@string/desc"/>
+    
+    <ImageView
+        android:id="@+id/iv_bg02"
+        android:layout_width="1430dp"
+        android:layout_height="900dp"
+        android:layout_marginLeft="-75dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="-75dp"
+        android:layout_marginBottom="-50dp"
+        android:contentDescription="@string/desc"/>
+
+    <ImageView
+        android:id="@+id/iv_bg03"
+        android:layout_width="1430dp"
+        android:layout_height="900dp"
+        android:layout_marginLeft="-75dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="-75dp"
+        android:layout_marginBottom="-50dp"
+        android:contentDescription="@string/desc"/>
+   	    
+	<ImageView
+        android:id="@+id/iv_bg04"
+        android:layout_width="1430dp"
+        android:layout_height="900dp"
+        android:layout_marginLeft="-75dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="-75dp"
+        android:layout_marginBottom="-50dp"
+        android:contentDescription="@string/desc"/>
+	
+	<ImageView
+        android:id="@+id/iv_bg05"
+        android:layout_width="1430dp"
+        android:layout_height="900dp"
+        android:layout_marginLeft="-75dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="-75dp"
+        android:layout_marginBottom="-50dp"
+        android:contentDescription="@string/desc"/>
+    
+    
+    <ImageView 
+        android:id="@+id/iv_logo"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="723dp"
+        
+        android:contentDescription="@string/desc"
+        android:background="@drawable/supergraphic"
+        />
+	
+    <ImageView 
+        android:id="@+id/iv_menu_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="700dp"
+        android:contentDescription="@string/desc"
+        android:background="@drawable/barmain"
+        />
+    
+    
+    <Button
+        android:id="@+id/btn_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="700dp"
+        android:background="@drawable/btn_main_new"
+        />
+    
+    <Button
+        android:id="@+id/btn_promotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="414dp"
+        android:layout_marginTop="700dp"
+        android:background="@drawable/btn_main_promotion"
+        />
+    
+    
+    <Button
+        android:id="@+id/btn_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="683dp"
+        android:layout_marginTop="700dp"
+        android:background="@drawable/btn_main_sale"
+        />
+
+    <Button
+        android:id="@+id/btn_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="999dp"
+        android:layout_marginTop="700dp"
+        android:background="@drawable/btn_main_all"
+        />
+    
+    <ImageView 
+        android:id="@+id/iv_shop_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="62dp"
+        android:background="@drawable/shoplogo"
+        android:contentDescription="@string/desc"/>
+    
+    <RelativeLayout
+        android:id="@+id/rl_start"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="#FF000000"
+        ></RelativeLayout>
+    
+</RelativeLayout>
