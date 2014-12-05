@@ -9,16 +9,24 @@ package com.bshlab.alumlist;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 
 public class StartActivity extends Activity {
 
+	private Animation fade;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_start);
 		
 		// 애니메이션 처리 후 바로 이동 
+		fade = AnimationUtils.loadAnimation(this, R.anim.fade_in_out);
+		
+		
 		
 		
 		
