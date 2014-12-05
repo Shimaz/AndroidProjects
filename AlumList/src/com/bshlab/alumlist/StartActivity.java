@@ -8,15 +8,18 @@ package com.bshlab.alumlist;
  */
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 
 public class StartActivity extends Activity {
 
 	private Animation fade;
-	
+	private ImageView ivLogo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,41 @@ public class StartActivity extends Activity {
 		
 		// 애니메이션 처리 후 바로 이동 
 		fade = AnimationUtils.loadAnimation(this, R.anim.fade_in_out);
+		fade.setAnimationListener(new AnimationListener(){
+
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				
+				Intent intent = new Intent(StartActivity.this, InfoActivity.class);
+				startActivity(intent);
+				finish();
+				overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+				
+				
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+		});
+		
+		
+		ivLogo = (ImageView)findViewById(R.id.iv_logo);
+		ivLogo.setBackgroundResource(R.drawable.ic_launcher);
+		ivLogo.startAnimation(fade);
+		
+		
 		
 		
 		
