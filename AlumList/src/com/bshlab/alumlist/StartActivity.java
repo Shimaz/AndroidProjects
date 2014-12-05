@@ -20,6 +20,9 @@ public class StartActivity extends Activity {
 		
 		// 애니메이션 처리 후 바로 이동 
 		
+		
+		
+		
 	}
 //
 //	@Override
