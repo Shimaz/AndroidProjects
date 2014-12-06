@@ -13,7 +13,8 @@
         android:background="#59B0D6">
         <TextView
             android:id="@+id/tv_title"
-            android:text="@string/desc"
+            android:text="@string/title_bookmark"
+            android:textSize="20sp"
             android:layout_height="40dp"
             android:layout_width="wrap_content"
             android:gravity="center"
