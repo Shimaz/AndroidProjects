@@ -43,21 +43,30 @@ public final class R {
         public static final int img_start=0x7f02000d;
     }
     public static final class id {
-        public static final int btn_bookmark=0x7f080002;
-        public static final int btn_list=0x7f080001;
-        public static final int btn_settings=0x7f080003;
-        public static final int iv_logo=0x7f080004;
+        public static final int btn_bookmark=0x7f080005;
+        public static final int btn_info=0x7f080002;
+        public static final int btn_list=0x7f080003;
+        public static final int btn_settings=0x7f080004;
+        public static final int iv_logo=0x7f080006;
         public static final int rl_title_bar=0x7f080000;
+        public static final int tv_title=0x7f080001;
     }
     public static final class layout {
-        public static final int layout_info=0x7f030000;
-        public static final int layout_start=0x7f030001;
+        public static final int layout_bookmark=0x7f030000;
+        public static final int layout_info=0x7f030001;
+        public static final int layout_list=0x7f030002;
+        public static final int layout_settings=0x7f030003;
+        public static final int layout_start=0x7f030004;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
         public static final int app_name=0x7f060000;
         public static final int desc=0x7f060003;
         public static final int hello_world=0x7f060001;
+        public static final int title_bookmark=0x7f060006;
+        public static final int title_info=0x7f060004;
+        public static final int title_list=0x7f060005;
+        public static final int title_settings=0x7f060007;
     }
     public static final class style {
         /** 
