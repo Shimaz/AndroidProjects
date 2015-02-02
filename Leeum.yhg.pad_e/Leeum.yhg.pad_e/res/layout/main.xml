@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <kr.tangomike.leeum.yhg.pad_e.CurlView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="78dp"
+        android:id="@+id/curl" />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_lang"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="1165dp"
+        android:background="@drawable/btn_eng"/>
+    
+    
+    <SeekBar
+        android:layout_width="603dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/prgs_page"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="1191dp"
+        android:layout_marginLeft="146dp"/>
+
+</RelativeLayout>
