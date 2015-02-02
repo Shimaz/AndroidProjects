@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_sugimoto"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+    
+    
+    <kr.tangomike.leeum.yhg.pad_g.PageDots
+        android:id="@+id/pdots"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="724dp"
+        android:layout_centerHorizontal="true"
+        />
+    
+    <RelativeLayout
+        android:layout_height="462dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="#E8FFFFFF"
+        >
+        
+    </RelativeLayout>
+    
+    
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="769dp"
+        android:contentDescription="@string/desc"
+        />
+    
+        
+    <ScrollView
+        android:id="@+id/scrl_content"
+        android:layout_width="419dp"
+        android:layout_height="352dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="834dp"
+        android:layout_marginLeft="345dp">
+        
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            >
+            
+            
+        </LinearLayout>
+        
+        
+    </ScrollView>
+    
+    
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/b_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="345dp"
+        android:layout_marginTop="808dp"
+        android:contentDescription="@string/desc"/>
+        
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/arrow_line"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="318dp"
+        android:layout_marginTop="1149dp"
+        android:contentDescription="@string/desc"/>     
+    
+    
+    <Button
+        android:id="@+id/btn_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="986dp"
+        android:background="@drawable/btn_eng"
+        />
+    
+
+</RelativeLayout>

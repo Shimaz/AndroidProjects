@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.tangomike.leeum.yhg.pad_g"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon_72"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+        android:hardwareAccelerated="true" >
+        <activity
+            android:name="kr.tangomike.leeum.yhg.pad_g.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="reverseLandscape">
+            
+            
+            
+        </activity>
+        
+        <activity
+            android:name="kr.tangomike.leeum.yhg.pad_g.StartActivity"
+            android:screenOrientation="reverseLandscape">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+        </activity>
+    </application>
+
+</manifest>
