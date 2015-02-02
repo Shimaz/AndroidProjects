@@ -1,5 +1,6 @@
 package kr.tangomike.leeum.yhg.pad_b;
 
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,7 +9,11 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 
@@ -25,6 +30,12 @@ public class MainActivity extends Activity {
 	private boolean isCounting = false;
 	
 	
+	private ImageView ivTitle;
+	private ScrollView scrl;
+	private LinearLayout llContent;
+	private boolean isKorean = true;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,8 +46,24 @@ public class MainActivity extends Activity {
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
         
-        
+        ivTitle = (ImageView)findViewById(R.id.iv_title);
        
+        ivTitle.setImageResource(R.drawable.b_1_title_kor);
+        
+        scrl = (ScrollView)findViewById(R.id.scrl_content);
+        llContent = (LinearLayout)findViewById(R.id.ll_content);
+        
+        ImageView iv1 = new ImageView(this);
+        iv1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        iv1.setImageResource(R.drawable.b_1_text_kor_1);
+        
+        ImageView iv2 = new ImageView(this);
+        iv2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        iv2.setImageResource(R.drawable.b_1_text_kor_2);
+        
+        llContent.addView(iv1);
+        llContent.addView(iv2);        
+        
         adapter = new SugimotoPagerAdapter();
 		mPager = (ViewPager)findViewById(R.id.pager_sugimoto);
 		mPager.setAdapter(adapter);
@@ -48,6 +75,62 @@ public class MainActivity extends Activity {
 			public void onPageSelected(int arg0) {
 				// TODO Auto-generated method stub
 				pDots.setDotPosition(mPager.getCurrentItem());
+				
+				
+				
+				String tmp = String.format("%d", mPager.getCurrentItem() + 1);
+		        
+				if(isKorean){
+					int rID = getResources().getIdentifier("b_" + tmp + "_title_kor", "drawable", getPackageName()); 
+			        ivTitle.setImageResource(rID);
+			        
+			        llContent.removeAllViews();
+			        
+			        int i = 1;
+			        while(true){
+			        	
+			        	String ttt = "b_" + tmp + "_text_kor_" + i;
+			        	android.util.Log.i("scrl", ttt);
+			        	
+			        	if(getResources().getIdentifier("b_" + tmp + "_text_kor_" + i, "drawable", getPackageName()) != 0){
+			        		ImageView iv = new ImageView(getApplicationContext());
+			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_kor_" + i, "drawable", getPackageName()));
+			        		llContent.addView(iv);
+			        		i++;
+			        	}else{
+			        		break;
+			        	}
+			        	
+			        	
+			        }
+			        scrl.requestLayout();
+			        scrl.scrollTo(0, 0);
+			        
+				}else{
+					int rID = getResources().getIdentifier("b_" + tmp + "_title_eng", "drawable", getPackageName()); 
+			        ivTitle.setImageResource(rID);
+			        
+			        llContent.removeAllViews();
+			        
+			        int i = 0;
+			        while(true){
+			        	if(getResources().getIdentifier("b_" + tmp + "_text_eng_" + i, "drawable", getPackageName()) != 0){
+			        		ImageView iv = new ImageView(getApplicationContext());
+			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_eng_" + i, "drawable", getPackageName()));
+			        		llContent.addView(iv);
+			        		i++;
+			        	}else{
+			        		break;
+			        	}
+			        	
+			        	
+			        }
+			        scrl.requestLayout();
+			        scrl.scrollTo(0, 0);
+				}
+		        
+				
+				
 			}
 			
 			@Override
@@ -72,6 +155,76 @@ public class MainActivity extends Activity {
 		pDots.setDotMargin(15);
 		
 		
+		
+		final Button btnLang = (Button)findViewById(R.id.btn_lang);
+		btnLang.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				String tmp = String.format("%d", mPager.getCurrentItem() + 1);
+				
+				if(isKorean){
+					isKorean = false;
+					btnLang.setBackgroundResource(R.drawable.btn_kor);
+
+					
+					
+					int rID = getResources().getIdentifier("b_" + tmp + "_title_kor", "drawable", getPackageName()); 
+			        ivTitle.setImageResource(rID);
+			        
+			        llContent.removeAllViews();
+			        
+			        int i = 1;
+			        while(true){
+			        	
+			        	String ttt = "b_" + tmp + "_text_kor_" + i;
+			        	android.util.Log.i("scrl", ttt);
+			        	
+			        	if(getResources().getIdentifier("b_" + tmp + "_text_kor_" + i, "drawable", getPackageName()) != 0){
+			        		ImageView iv = new ImageView(getApplicationContext());
+			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_kor_" + i, "drawable", getPackageName()));
+			        		llContent.addView(iv);
+			        		i++;
+			        	}else{
+			        		break;
+			        	}
+			        	
+			        	
+			        }
+			        scrl.requestLayout();
+			        scrl.scrollTo(0, 0);
+					
+				}else{
+					isKorean = true;
+					btnLang.setBackgroundResource(R.drawable.btn_eng);
+					
+					int rID = getResources().getIdentifier("b_" + tmp + "_title_eng", "drawable", getPackageName()); 
+			        ivTitle.setImageResource(rID);
+			        
+			        llContent.removeAllViews();
+			        
+			        int i = 0;
+			        while(true){
+			        	if(getResources().getIdentifier("b_" + tmp + "_text_eng_" + i, "drawable", getPackageName()) != 0){
+			        		ImageView iv = new ImageView(getApplicationContext());
+			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_eng_" + i, "drawable", getPackageName()));
+			        		llContent.addView(iv);
+			        		i++;
+			        	}else{
+			        		break;
+			        	}
+			        	
+			        	
+			        }
+			        scrl.requestLayout();
+			        scrl.scrollTo(0, 0);
+				}
+				
+			}
+		});
+		
 		mHandler = new Handler() {
         	public void handleMessage(Message msg){
         		tCounter++;
@@ -94,13 +247,15 @@ public class MainActivity extends Activity {
         			// Run ScreenSaver Activity
         			mPager.setCurrentItem(0, true);
         			isCounting = false;
+        			overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+        			finish();
         		}
         		
         		
         	}
         };
         
-//        mHandler.sendEmptyMessage(0);
+        mHandler.sendEmptyMessage(0);
 		
 		
 	}
@@ -128,7 +283,7 @@ public class MainActivity extends Activity {
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return 10;
+			return 2;
 		}
 		
 		@SuppressLint("DefaultLocale")
@@ -137,9 +292,9 @@ public class MainActivity extends Activity {
 			
 	        ImageView imgview = new ImageView(getBaseContext());
 	        
-	        String tmp = String.format("%02d", position);
+	        String tmp = String.format("%d", position + 1);
 	        
-	        int rID = getResources().getIdentifier("img_" + tmp , "drawable", getPackageName()); 
+	        int rID = getResources().getIdentifier("b_" + tmp + "_img", "drawable", getPackageName()); 
 	        imgview.setImageResource(rID);
 	        
 	        ((ViewPager)collection).addView(imgview, 0);
