@@ -21,6 +21,7 @@
         />
     
     <RelativeLayout
+        android:id="@+id/rl_content"
         android:layout_height="462dp"
         android:layout_width="match_parent"
         android:layout_alignParentLeft="true"
@@ -29,6 +30,24 @@
         >
         
     </RelativeLayout>
+    
+    
+    
+    <ScrollView
+        android:id="@+id/scrl_content"
+        android:layout_width="419dp"
+        android:layout_height="352dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="834dp"
+        android:layout_marginLeft="345dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        >
+        
+
+        
+        
+    </ScrollView>
     
     
     <ImageView
@@ -42,27 +61,7 @@
         />
     
         
-    <ScrollView
-        android:id="@+id/scrl_content"
-        android:layout_width="419dp"
-        android:layout_height="352dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="834dp"
-        android:layout_marginLeft="345dp">
-        
-        <LinearLayout
-            android:id="@+id/ll_content"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            >
-            
-            
-        </LinearLayout>
-        
-        
-    </ScrollView>
+
     
     
     <ImageView
