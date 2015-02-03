@@ -13,6 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+//import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -31,10 +32,11 @@ public class MainActivity extends Activity {
 	
 	
 	private ImageView ivTitle;
-	private ScrollView scrl;
-	private LinearLayout llContent;
 	private boolean isKorean = true;
 	
+//	private RelativeLayout rlContent;
+	
+	private ScrollView scrl;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,21 +50,11 @@ public class MainActivity extends Activity {
         
         ivTitle = (ImageView)findViewById(R.id.iv_title);
        
-        ivTitle.setImageResource(R.drawable.b_1_title_kor);
+        ivTitle.setImageResource(R.drawable.g_1_title_kor);
         
+        
+//        rlContent = (RelativeLayout)findViewById(R.id.rl_content);
         scrl = (ScrollView)findViewById(R.id.scrl_content);
-        llContent = (LinearLayout)findViewById(R.id.ll_content);
-        
-        ImageView iv1 = new ImageView(this);
-        iv1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        iv1.setImageResource(R.drawable.b_1_text_kor_1);
-        
-        ImageView iv2 = new ImageView(this);
-        iv2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        iv2.setImageResource(R.drawable.b_1_text_kor_2);
-        
-        llContent.addView(iv1);
-        llContent.addView(iv2);        
         
         adapter = new SugimotoPagerAdapter();
 		mPager = (ViewPager)findViewById(R.id.pager_sugimoto);
@@ -75,62 +67,7 @@ public class MainActivity extends Activity {
 			public void onPageSelected(int arg0) {
 				// TODO Auto-generated method stub
 				pDots.setDotPosition(mPager.getCurrentItem());
-				
-				
-				
-				String tmp = String.format("%d", mPager.getCurrentItem() + 1);
-		        
-				if(isKorean){
-					int rID = getResources().getIdentifier("b_" + tmp + "_title_kor", "drawable", getPackageName()); 
-			        ivTitle.setImageResource(rID);
-			        
-			        llContent.removeAllViews();
-			        
-			        int i = 1;
-			        while(true){
-			        	
-			        	String ttt = "b_" + tmp + "_text_kor_" + i;
-			        	android.util.Log.i("scrl", ttt);
-			        	
-			        	if(getResources().getIdentifier("b_" + tmp + "_text_kor_" + i, "drawable", getPackageName()) != 0){
-			        		ImageView iv = new ImageView(getApplicationContext());
-			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_kor_" + i, "drawable", getPackageName()));
-			        		llContent.addView(iv);
-			        		i++;
-			        	}else{
-			        		break;
-			        	}
-			        	
-			        	
-			        }
-			        scrl.requestLayout();
-			        scrl.scrollTo(0, 0);
-			        
-				}else{
-					int rID = getResources().getIdentifier("b_" + tmp + "_title_eng", "drawable", getPackageName()); 
-			        ivTitle.setImageResource(rID);
-			        
-			        llContent.removeAllViews();
-			        
-			        int i = 0;
-			        while(true){
-			        	if(getResources().getIdentifier("b_" + tmp + "_text_eng_" + i, "drawable", getPackageName()) != 0){
-			        		ImageView iv = new ImageView(getApplicationContext());
-			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_eng_" + i, "drawable", getPackageName()));
-			        		llContent.addView(iv);
-			        		i++;
-			        	}else{
-			        		break;
-			        	}
-			        	
-			        	
-			        }
-			        scrl.requestLayout();
-			        scrl.scrollTo(0, 0);
-				}
-		        
-				
-				
+				setPageContent(mPager.getCurrentItem(), isKorean);
 			}
 			
 			@Override
@@ -138,7 +75,7 @@ public class MainActivity extends Activity {
 				tCounter = 0;
 				if(!isCounting && mPager.getCurrentItem() == 0){
 					isCounting = true;
-					mHandler.sendEmptyMessageDelayed(0, 1000);
+//					mHandler.sendEmptyMessageDelayed(0, 1000);
 				}
 			}
 			
@@ -150,9 +87,9 @@ public class MainActivity extends Activity {
 		
 		pDots = (PageDots)findViewById(R.id.pdots);
 		pDots.setDotCount(adapter.getCount());
-		pDots.setUnfocusedDot(R.drawable.dot_unfocused);
-		pDots.setFocusedDot(R.drawable.dot_focused);
-		pDots.setDotMargin(15);
+		pDots.setUnfocusedDot(R.drawable.dot_unselected);
+		pDots.setFocusedDot(R.drawable.dot_selected);
+		pDots.setDotMargin(11);
 		
 		
 		
@@ -162,64 +99,57 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+			
+				tCounter = 0;
 				
-				String tmp = String.format("%d", mPager.getCurrentItem() + 1);
 				
 				if(isKorean){
 					isKorean = false;
+					
 					btnLang.setBackgroundResource(R.drawable.btn_kor);
-
 					
-					
-					int rID = getResources().getIdentifier("b_" + tmp + "_title_kor", "drawable", getPackageName()); 
-			        ivTitle.setImageResource(rID);
-			        
-			        llContent.removeAllViews();
-			        
-			        int i = 1;
-			        while(true){
-			        	
-			        	String ttt = "b_" + tmp + "_text_kor_" + i;
-			        	android.util.Log.i("scrl", ttt);
-			        	
-			        	if(getResources().getIdentifier("b_" + tmp + "_text_kor_" + i, "drawable", getPackageName()) != 0){
-			        		ImageView iv = new ImageView(getApplicationContext());
-			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_kor_" + i, "drawable", getPackageName()));
-			        		llContent.addView(iv);
-			        		i++;
-			        	}else{
-			        		break;
-			        	}
-			        	
-			        	
-			        }
-			        scrl.requestLayout();
-			        scrl.scrollTo(0, 0);
 					
 				}else{
 					isKorean = true;
-					btnLang.setBackgroundResource(R.drawable.btn_eng);
 					
-					int rID = getResources().getIdentifier("b_" + tmp + "_title_eng", "drawable", getPackageName()); 
-			        ivTitle.setImageResource(rID);
-			        
-			        llContent.removeAllViews();
-			        
-			        int i = 0;
-			        while(true){
-			        	if(getResources().getIdentifier("b_" + tmp + "_text_eng_" + i, "drawable", getPackageName()) != 0){
-			        		ImageView iv = new ImageView(getApplicationContext());
-			        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "text_eng_" + i, "drawable", getPackageName()));
-			        		llContent.addView(iv);
-			        		i++;
-			        	}else{
-			        		break;
-			        	}
-			        	
-			        	
-			        }
-			        scrl.requestLayout();
-			        scrl.scrollTo(0, 0);
+					btnLang.setBackgroundResource(R.drawable.btn_eng);
+				}
+				
+				setPageContent(mPager.getCurrentItem(), isKorean);
+				
+				
+				
+			}
+		});
+		
+		Button btnLeft = (Button)findViewById(R.id.btn_left);
+		btnLeft.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				tCounter = 0;
+				
+				if(mPager.getCurrentItem() != 0){
+					mPager.setCurrentItem(mPager.getCurrentItem() - 1, true);
+				}
+			}
+		});
+		
+		Button btnRight = (Button)findViewById(R.id.btn_right);
+		btnRight.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			
+				tCounter = 0;
+					
+				if(mPager.getCurrentItem() < adapter.getCount() - 1){
+				
+					mPager.setCurrentItem(mPager.getCurrentItem() + 1, true);
+					
 				}
 				
 			}
@@ -257,6 +187,86 @@ public class MainActivity extends Activity {
         
         mHandler.sendEmptyMessage(0);
 		
+     // set initial contents
+        setPageContent(0, true);
+        
+	}
+	
+	
+	
+	private void setPageContent(int pageNumber, boolean lang){
+		
+		
+		
+
+		String tmp = String.format("%d", pageNumber + 1);
+        
+		scrl.removeViews(0, scrl.getChildCount());
+		
+		
+		
+		LinearLayout llContent = new LinearLayout(getApplicationContext());
+		llContent.setOrientation(LinearLayout.VERTICAL);
+		llContent.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		
+		
+		
+		if(lang){
+			int rID = getResources().getIdentifier("g_" + tmp + "_title_kor", "drawable", getPackageName()); 
+	        ivTitle.setImageResource(rID);
+	        
+	        
+	        int i = 1;
+	        while(true){
+	        	
+	        	String ttt = "g_" + tmp + "_text_kor_" + i;
+	        	android.util.Log.i("scrl", ttt);
+	        	
+	        	if(getResources().getIdentifier("g_" + tmp + "_text_kor_" + i, "drawable", getPackageName()) != 0){
+	        		ImageView iv = new ImageView(getApplicationContext());
+	        		iv.setImageResource(getResources().getIdentifier("g_" + tmp + "_text_kor_" + i, "drawable", getPackageName()));
+	        		llContent.addView(iv);
+	        		
+	        		android.util.Log.i("content", "g_" + tmp + "_text_kor_" + i);
+	        		
+	        		i++;
+	        	}else{
+	        		break;
+	        	}
+	        	
+	        	
+	        }
+	        
+	        
+		}else{
+			int rID = getResources().getIdentifier("g_" + tmp + "_title_eng", "drawable", getPackageName()); 
+	        ivTitle.setImageResource(rID);
+	        
+	        
+	        int i = 1;
+	        while(true){
+	        	if(getResources().getIdentifier("g_" + tmp + "_text_eng_" + i, "drawable", getPackageName()) != 0){
+	        		ImageView iv = new ImageView(getApplicationContext());
+	        		iv.setImageResource(getResources().getIdentifier("g_" + tmp + "_text_eng_" + i, "drawable", getPackageName()));
+	        		llContent.addView(iv);
+	        		
+	        		android.util.Log.i("content", "g_" + tmp + "_text_eng_" + i);
+	        		
+	        		i++;
+	        	}else{
+	        		break;
+	        	}
+	        	
+	        	
+	        }
+		}
+		scrl.addView(llContent);
+		scrl.scrollTo(0, 0);
+		scrl.requestLayout();
+		
+
+		
+		
 		
 	}
 	
@@ -283,7 +293,7 @@ public class MainActivity extends Activity {
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return 2;
+			return 8;
 		}
 		
 		@SuppressLint("DefaultLocale")
@@ -294,7 +304,7 @@ public class MainActivity extends Activity {
 	        
 	        String tmp = String.format("%d", position + 1);
 	        
-	        int rID = getResources().getIdentifier("b_" + tmp + "_img", "drawable", getPackageName()); 
+	        int rID = getResources().getIdentifier("g_" + tmp + "_img", "drawable", getPackageName()); 
 	        imgview.setImageResource(rID);
 	        
 	        ((ViewPager)collection).addView(imgview, 0);

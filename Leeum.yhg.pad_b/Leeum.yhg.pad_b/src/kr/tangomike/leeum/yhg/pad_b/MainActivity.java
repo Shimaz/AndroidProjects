@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+//import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
 				tCounter = 0;
 				if(!isCounting && mPager.getCurrentItem() == 0){
 					isCounting = true;
-					mHandler.sendEmptyMessageDelayed(0, 1000);
+//					mHandler.sendEmptyMessageDelayed(0, 1000);
 				}
 			}
 			
@@ -87,8 +87,8 @@ public class MainActivity extends Activity {
 		
 		pDots = (PageDots)findViewById(R.id.pdots);
 		pDots.setDotCount(adapter.getCount());
-		pDots.setUnfocusedDot(R.drawable.dot_unfocused);
-		pDots.setFocusedDot(R.drawable.dot_focused);
+		pDots.setUnfocusedDot(R.drawable.dot_unselected);
+		pDots.setFocusedDot(R.drawable.dot_selected);
 		pDots.setDotMargin(15);
 		
 		
@@ -100,6 +100,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 			
+				tCounter = 0;
 				
 				
 				if(isKorean){
@@ -120,6 +121,43 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+		
+		Button btnLeft = (Button)findViewById(R.id.btn_left);
+		btnLeft.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				tCounter = 0;
+				
+				if(mPager.getCurrentItem() != 0){
+					mPager.setCurrentItem(mPager.getCurrentItem() - 1, true);
+				}
+				
+			}
+		});
+		
+		Button btnRight = (Button)findViewById(R.id.btn_right);
+		btnRight.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+		
+				tCounter = 0;
+				
+				if(mPager.getCurrentItem() < adapter.getCount() - 1){
+					
+					mPager.setCurrentItem(mPager.getCurrentItem() + 1, true);
+					
+				}
+			}
+		});
+		
+		
+		
+		
 		
 		mHandler = new Handler() {
         	public void handleMessage(Message msg){
@@ -193,7 +231,7 @@ public class MainActivity extends Activity {
 	        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "_text_kor_" + i, "drawable", getPackageName()));
 	        		llContent.addView(iv);
 	        		
-	        		android.util.Log.i("content", "b_" + tmp + "text_kor_" + i);
+	        		android.util.Log.i("content", "b_" + tmp + "_text_kor_" + i);
 	        		
 	        		i++;
 	        	}else{
@@ -209,14 +247,14 @@ public class MainActivity extends Activity {
 	        ivTitle.setImageResource(rID);
 	        
 	        
-	        int i = 0;
+	        int i = 1;
 	        while(true){
 	        	if(getResources().getIdentifier("b_" + tmp + "_text_eng_" + i, "drawable", getPackageName()) != 0){
 	        		ImageView iv = new ImageView(getApplicationContext());
 	        		iv.setImageResource(getResources().getIdentifier("b_" + tmp + "_text_eng_" + i, "drawable", getPackageName()));
 	        		llContent.addView(iv);
 	        		
-	        		android.util.Log.i("content", "b_" + tmp + "text_eng_" + i);
+	        		android.util.Log.i("content", "b_" + tmp + "_text_eng_" + i);
 	        		
 	        		i++;
 	        	}else{
@@ -227,7 +265,9 @@ public class MainActivity extends Activity {
 	        }
 		}
 		scrl.addView(llContent);
-	
+		scrl.scrollTo(0, 0);
+		scrl.requestLayout();
+		
 
 		
 		

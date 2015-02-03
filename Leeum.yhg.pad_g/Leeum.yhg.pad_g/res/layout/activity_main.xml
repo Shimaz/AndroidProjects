@@ -10,21 +10,31 @@
         android:layout_width="match_parent"/>
     
     
-    <kr.tangomike.leeum.yhg.pad_g.PageDots
-        android:id="@+id/pdots"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="904dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="724dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_alignParentLeft="true">
+    	
+    	<kr.tangomike.leeum.yhg.pad_g.PageDots
+	        android:id="@+id/pdots"
+	        android:orientation="horizontal"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginBottom="47dp"
+	        android:layout_centerHorizontal="true"
+	        />    
+        
+    </RelativeLayout>
+    
+    
     
     <RelativeLayout
-        android:layout_height="462dp"
-        android:layout_width="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
+        android:layout_width="376dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:background="#E8FFFFFF"
         >
         
@@ -37,30 +47,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="769dp"
+        android:layout_marginLeft="904dp"
         android:contentDescription="@string/desc"
         />
     
         
     <ScrollView
         android:id="@+id/scrl_content"
-        android:layout_width="419dp"
-        android:layout_height="352dp"
+        android:layout_width="351dp"
+        android:layout_height="415dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="834dp"
-        android:layout_marginLeft="345dp">
-        
-        <LinearLayout
-            android:id="@+id/ll_content"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            >
-            
-            
-        </LinearLayout>
-        
+        android:layout_marginTop="215dp"
+        android:layout_marginLeft="904dp">
+    
         
     </ScrollView>
     
@@ -71,20 +71,11 @@
         android:background="@drawable/b_bar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="345dp"
-        android:layout_marginTop="808dp"
+        android:layout_marginLeft="904dp"
+        android:layout_marginTop="200dp"
         android:contentDescription="@string/desc"/>
         
-    <ImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:background="@drawable/arrow_line"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="318dp"
-        android:layout_marginTop="1149dp"
-        android:contentDescription="@string/desc"/>     
-    
+
     
     <Button
         android:id="@+id/btn_lang"
@@ -92,10 +83,30 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="19dp"
-        android:layout_marginTop="986dp"
+        android:layout_marginLeft="1100dp"
+        android:layout_marginTop="600dp"
         android:background="@drawable/btn_eng"
         />
     
+    
+    <Button
+        android:id="@+id/btn_left"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/btn_left"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="316dp"/>
+    
+    <Button
+        android:id="@+id/btn_right"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/btn_right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="818dp"
+        android:layout_marginTop="316dp"/>
 
 </RelativeLayout>

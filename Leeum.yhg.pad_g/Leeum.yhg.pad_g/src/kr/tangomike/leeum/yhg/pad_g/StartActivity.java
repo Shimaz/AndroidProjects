@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
@@ -19,7 +20,10 @@ public class StartActivity extends Activity {
 		
 		setContentView(rl);
 		
-		rl.setBackgroundResource(R.drawable.b_cover);
+		/*Disable Sleep Mode */
+        super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
+		rl.setBackgroundResource(R.drawable.g_cover);
 		
 		rl.setOnTouchListener(new OnTouchListener(){
 
