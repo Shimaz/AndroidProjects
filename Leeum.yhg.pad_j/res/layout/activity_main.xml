@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_sugimoto"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"/>
+    
+    
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="904dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+    	
+    	<kr.tangomike.leeum.yhg.pad_j.PageDots
+	        android:id="@+id/pdots"
+	        android:orientation="horizontal"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_marginBottom="47dp"
+	        android:layout_centerHorizontal="true"
+	        />    
+        
+    </RelativeLayout>
+    
+    
+    
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="376dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#E8FFFFFF"
+        >
+        
+    </RelativeLayout>
+    
+    
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="904dp"
+        android:contentDescription="@string/desc"
+        />
+    
+        
+    <ScrollView
+        android:id="@+id/scrl_content"
+        android:layout_width="351dp"
+        android:layout_height="415dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="215dp"
+        android:layout_marginLeft="904dp">
+    
+        
+    </ScrollView>
+    
+    
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/b_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="904dp"
+        android:layout_marginTop="200dp"
+        android:contentDescription="@string/desc"/>
+        
+
+    
+    <Button
+        android:id="@+id/btn_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="1100dp"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/btn_eng"
+        />
+    
+    
+    <Button
+        android:id="@+id/btn_left"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/btn_left"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="316dp"/>
+    
+    <Button
+        android:id="@+id/btn_right"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/btn_right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="818dp"
+        android:layout_marginTop="316dp"/>
+
+</RelativeLayout>
