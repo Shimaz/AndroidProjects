@@ -3,5 +3,5 @@
 
     <string name="app_name">YHG_H</string>
     <string name="hello_world">Hello world!</string>
-
+	<string name="desc">desc</string>
 </resources>

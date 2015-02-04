@@ -2,7 +2,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    android:id="@+id/rl_base">
+    
+    <VideoView
+        android:id="@+id/vv_main"
+        android:layout_width="904dp"
+        android:layout_height="508dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="36dp"
+        />
+    
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="376dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="#f0f0f0"
+        android:alpha="0.9"
+        ></RelativeLayout>
 
-
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/iv_title"
+        android:layout_marginLeft="904dp"
+        android:contentDescription="@string/desc"
+        />
+    
+    <ImageView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="932dp"
+        android:layout_marginTop="310dp"
+        android:contentDescription="@string/desc"/>
+    
+    <ScrollView
+        android:layout_width="351dp"
+        android:layout_height="301dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="904dp"
+        android:layout_marginTop="333dp"
+        android:id="@+id/scrl_content"
+        >
+        
+    </ScrollView>
+        
+    
 </RelativeLayout>
