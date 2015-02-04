@@ -116,11 +116,11 @@ public class PageDots extends LinearLayout {
 			ImageView iv = new ImageView(mContext);
 			if(i == dotPosition){
 				iv.setImageBitmap(dotFocused);
-				iv.setAlpha(0.4f);
+//				iv.setAlpha(0.4f);
 			}
 			else{
 				iv.setImageBitmap(dotUnfocused);
-				iv.setAlpha(0.4f);
+//				iv.setAlpha(0.4f);
 			}
 			
 			if(dotArr == null) android.util.Log.i("Error", "arr is null");

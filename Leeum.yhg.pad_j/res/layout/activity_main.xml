@@ -55,10 +55,10 @@
     <ScrollView
         android:id="@+id/scrl_content"
         android:layout_width="351dp"
-        android:layout_height="415dp"
+        android:layout_height="305dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="215dp"
+        android:layout_marginTop="3305dp"
         android:layout_marginLeft="904dp">
     
         
@@ -71,8 +71,8 @@
         android:background="@drawable/b_bar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="904dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginLeft="931dp"
+        android:layout_marginTop="326dp"
         android:contentDescription="@string/desc"/>
         
 

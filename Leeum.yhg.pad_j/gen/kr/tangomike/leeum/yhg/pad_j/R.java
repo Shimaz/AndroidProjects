@@ -82,7 +82,8 @@ public final class R {
         public static final int j_3_text_kor_3=0x7f020036;
         public static final int j_3_title_eng=0x7f020037;
         public static final int j_3_title_kor=0x7f020038;
-        public static final int no_cover=0x7f020039;
+        public static final int j_cover=0x7f020039;
+        public static final int no_cover=0x7f02003a;
     }
     public static final class id {
         public static final int action_settings=0x7f090007;
