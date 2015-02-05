@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 public class StartActivity extends Activity {
@@ -40,7 +43,21 @@ public class StartActivity extends Activity {
 			
 		});
 		
+		ImageView iv = new ImageView(this);
+		iv.setBackgroundResource(R.drawable.idletime_start_btn);
+		iv.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		iv.setX(278);
+		iv.setY(494);
+		
+		rl.addView(iv);
+		
+		Animation fade = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in_out);
+		iv.startAnimation(fade);
+		
+		
 	}
+	
+	
 	
 
 }

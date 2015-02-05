@@ -24,7 +24,7 @@
         <activity
             android:name="kr.tangomike.leeum.yhg.pad_e.CurlActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="reversePortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,7 +38,7 @@
         <activity
             android:name="kr.tangomike.leeum.yhg.pad_e.CurlEngActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="reversePortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

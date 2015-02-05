@@ -108,6 +108,7 @@ public class MainActivity extends Activity {
 		});
         
         
+        
         mHandler = new Handler() {
         	public void handleMessage(Message msg){
         		tCounter++;

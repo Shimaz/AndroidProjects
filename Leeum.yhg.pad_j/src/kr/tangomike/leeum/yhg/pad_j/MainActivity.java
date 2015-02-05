@@ -7,6 +7,7 @@ import android.os.Message;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
@@ -152,6 +153,16 @@ public class MainActivity extends Activity {
 					
 				}
 				
+			}
+		});
+		
+		scrl.setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				tCounter = 0;
+				return false;
 			}
 		});
 		

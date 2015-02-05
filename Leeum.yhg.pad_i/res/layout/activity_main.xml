@@ -59,7 +59,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="215dp"
-        android:layout_marginLeft="904dp">
+        android:layout_marginLeft="904dp"
+        android:scrollbarThumbVertical="@drawable/scroll_movebar"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:fadeScrollbars="false"
+        android:scrollbarTrackVertical="@drawable/scrl_track">
     
         
     </ScrollView>
@@ -75,6 +79,15 @@
         android:layout_marginTop="186dp"
         android:contentDescription="@string/desc"/>
         
+    
+    <ImageView
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:background="@drawable/arrow_line"
+    	android:layout_marginLeft="1249dp"
+    	android:layout_marginTop="640dp"
+    	android:contentDescription="@string/desc"
+    	></ImageView>
 
     
     <Button

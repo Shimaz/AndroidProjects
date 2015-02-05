@@ -41,7 +41,10 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="834dp"
         android:layout_marginLeft="345dp"
+        android:scrollbarThumbVertical="@drawable/scroll_movebar"
         android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:fadeScrollbars="false"
+        android:scrollbarTrackVertical="@drawable/scrl_track"
         >
         
 

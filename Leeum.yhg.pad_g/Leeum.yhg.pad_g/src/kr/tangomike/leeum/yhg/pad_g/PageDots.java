@@ -91,11 +91,11 @@ public class PageDots extends LinearLayout {
 				if(i == position){
 					ImageView iv = (ImageView)dotArr.get(i);
 					iv.setImageBitmap(dotFocused);
-					iv.setAlpha(0.4f);
+//					iv.setAlpha(0.4f);
 				}else{
 					ImageView iv = (ImageView)dotArr.get(i);
 					iv.setImageBitmap(dotUnfocused);
-					iv.setAlpha(0.4f);
+//					iv.setAlpha(0.4f);
 				}
 				
 			}

@@ -41,11 +41,25 @@
         android:layout_width="763dp"
         android:layout_height="993dp"
         android:layout_marginTop="169dp"
+        android:scrollbarThumbVertical="@drawable/scroll_movebar"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:fadeScrollbars="false"
+        android:scrollbarTrackVertical="@drawable/scrl_track"
         >
         
         
     </ScrollView>
         
     
+    <ImageView
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:background="@drawable/d_arrow_line"
+    	android:layout_marginLeft="395dp"
+    	android:layout_marginTop="1173dp"
+    	android:contentDescription="@string/desc"
+    	></ImageView>
+    	
+    	
  
 </RelativeLayout>
