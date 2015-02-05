@@ -10,10 +10,10 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
 
@@ -25,17 +25,19 @@ import android.widget.SeekBar;
 public class CurlActivity extends Activity {
 
 	private CurlView mCurlView;
-    private int[] mBitmapIds = {R.drawable.e_kor_1, R.drawable.e_kor_2, R.drawable.e_kor_3, R.drawable.e_kor_4, R.drawable.e_kor_5, R.drawable.e_kor_6, R.drawable.e_kor_7, R.drawable.e_kor_8, R.drawable.e_kor_9, R.drawable.e_kor_10, R.drawable.e_kor_11, R.drawable.e_kor_12, R.drawable.e_kor_13};
+    private int[] mBitmapIds = {R.drawable.e_kor_1, R.drawable.e_kor_2, R.drawable.e_kor_3, R.drawable.e_kor_4, R.drawable.e_kor_5, R.drawable.e_kor_6, R.drawable.e_kor_7, R.drawable.e_kor_8, R.drawable.e_kor_9, R.drawable.e_kor_10, R.drawable.e_kor_11, R.drawable.e_kor_12, R.drawable.e_kor_13, R.drawable.e_kor_14};
 
     private SeekBar sBar;
+    
 
+    
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
-
-
+		
+		
+	
         /*Disable Sleep Mode */
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -49,8 +51,10 @@ public class CurlActivity extends Activity {
 		mCurlView.setPageProvider(new PageProvider());
 		mCurlView.setSizeChangedObserver(new SizeChangedObserver());
 		mCurlView.setCurrentIndex(index);
-//		mCurlView.setBackgroundColor(0xFF202830);
-		mCurlView.setBackgroundColor(0xFFFFFFFF);
+		mCurlView.setBackgroundColor(0x00ffffff);
+		mCurlView.setAllowLastPageCurl(false);
+//		mCurlView.setBackgroundResource(R.drawable.e_kor_14);
+	
 
 
 		// This is something somewhat experimental. Before uncommenting next
@@ -92,8 +96,31 @@ public class CurlActivity extends Activity {
 
             }
         });
+   
+ 
 
 	}
+	
+	   @Override
+	    public boolean onTouchEvent(MotionEvent event){
+	  
+		   
+		   if(event.getAction() == MotionEvent.ACTION_UP){
+			   android.util.Log.i("action", "" + mCurlView.getCurrentIndex());
+		   }
+		   
+		   
+	    	
+		   mCurlView.retriveTouch(event);
+		   
+	    	return super.onTouchEvent(event);
+	    }
+	    
+	
+
+	
+
+
 
 	@Override
 	public void onPause() {
@@ -108,11 +135,11 @@ public class CurlActivity extends Activity {
 	}
 
 
-
-	@Override
-	public Object onRetainNonConfigurationInstance() {
-		return mCurlView.getCurrentIndex();
-	}
+//
+//	@Override
+//	public Object onRetainNonConfigurationInstance() {
+//		return mCurlView.getCurrentIndex();
+//	}
 
 	/**
 	 * Bitmap provider.
@@ -120,6 +147,7 @@ public class CurlActivity extends Activity {
 	private class PageProvider implements CurlView.PageProvider {
 
 
+		
 
 
 
@@ -133,6 +161,9 @@ public class CurlActivity extends Activity {
 		}
 
 		private Bitmap loadBitmap(int width, int height, int index) {
+			
+		
+			
 			Bitmap b = Bitmap.createBitmap(width, height,
 					Bitmap.Config.ARGB_8888);
 			b.eraseColor(0x00FFFFFF);  
@@ -185,7 +216,8 @@ public class CurlActivity extends Activity {
             page.setTexture(front, CurlPage.SIDE_FRONT);
             page.setColor(Color.rgb(180,180,180), CurlPage.SIDE_BACK);
 
-            sBar.setProgress(index);
+ 
+            
 
 		}
 

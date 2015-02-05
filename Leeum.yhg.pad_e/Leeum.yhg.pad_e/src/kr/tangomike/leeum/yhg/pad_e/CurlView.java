@@ -29,13 +29,13 @@ import android.view.View;
 * 
 * @author harism
 */
-public class CurlView extends GLSurfaceView implements View.OnTouchListener,
+public class CurlView extends GLSurfaceView implements /*View.OnTouchListener,*/
 		CurlRenderer.Observer {
 
 	// Curl state. We are flipping none, left or right page.
-	private static final int CURL_LEFT = 1;
-	private static final int CURL_NONE = 0;
-	private static final int CURL_RIGHT = 2;
+	public static final int CURL_LEFT = 1;
+	public static final int CURL_NONE = 0;
+	public static final int CURL_RIGHT = 2;
 
 	// Constants for mAnimationTargetEvent.
 	private static final int SET_CURL_TO_LEFT = 1;
@@ -58,7 +58,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 	private PointF mCurlDir = new PointF();
 
 	private PointF mCurlPos = new PointF();
-	private int mCurlState = CURL_NONE;
+	public int mCurlState = CURL_NONE;
 	// Current bitmap index. This is always showed as front of right page.
 	private int mCurrentIndex = 0;
 
@@ -125,7 +125,7 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		mRenderer = new CurlRenderer(this);
 		setRenderer(mRenderer);
 		setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
-		setOnTouchListener(this);
+//		setOnTouchListener(this);
 
 		// Even though left and right pages are static we have to allocate room
 		// for curl on them too as we are switching meshes. Another way would be
@@ -160,6 +160,8 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 				// If we were curling left page update current index.
 				if (mCurlState == CURL_LEFT) {
 					--mCurrentIndex;
+					
+//					android.util.Log.i("index", "" + mCurrentIndex);
 				}
 			} else if (mAnimationTargetEvent == SET_CURL_TO_LEFT) {
 				// Switch curled page to left.
@@ -177,6 +179,8 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 				// If we were curling right page update current index.
 				if (mCurlState == CURL_RIGHT) {
 					++mCurrentIndex;
+					
+//					android.util.Log.i("index", "" + mCurrentIndex);
 				}
 			}
 			mCurlState = CURL_NONE;
@@ -219,8 +223,9 @@ public class CurlView extends GLSurfaceView implements View.OnTouchListener,
 		mPageCurl.resetTexture();
 	}
 
-	@Override
-	public boolean onTouch(View view, MotionEvent me) {
+//	@Override
+//	public boolean retriveTouch(View view, MotionEvent me) {
+	public boolean retriveTouch(MotionEvent me){
 		// No dragging during animation at the moment.
 		// TODO: Stop animation on touch event and return to drag mode.
 		if (mAnimate || mPageProvider == null) {
