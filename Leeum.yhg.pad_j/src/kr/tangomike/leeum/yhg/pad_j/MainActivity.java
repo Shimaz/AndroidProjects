@@ -304,7 +304,7 @@ public class MainActivity extends Activity {
 	        
 	        String tmp = String.format("%d", position + 1);
 	        
-	        int rID = getResources().getIdentifier("i_" + tmp + "_img", "drawable", getPackageName()); 
+	        int rID = getResources().getIdentifier("j_" + tmp + "_img", "drawable", getPackageName()); 
 	        imgview.setImageResource(rID);
 	        
 	        ((ViewPager)collection).addView(imgview, 0);

@@ -58,7 +58,7 @@
         android:layout_height="305dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="3305dp"
+        android:layout_marginTop="330dp"
         android:layout_marginLeft="904dp">
     
         
@@ -83,8 +83,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="1100dp"
-        android:layout_marginTop="600dp"
+        android:layout_marginLeft="1051dp"
+        android:layout_marginTop="641dp"
         android:background="@drawable/btn_eng"
         />
     
