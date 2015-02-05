@@ -49,10 +49,141 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="904dp"
         android:layout_marginTop="333dp"
-        android:id="@+id/scrl_content"
+        android:id="@+id/scrl_kor"
+        android:scrollbarThumbVertical="@drawable/scroll_movebar"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:fadeScrollbars="false"
+        android:scrollbarTrackVertical="@drawable/scrl_track"
         >
+        <LinearLayout 
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            >
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_kor_1"
+                android:contentDescription="@string/desc"/>
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_kor_2"
+                android:contentDescription="@string/desc"/>
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_kor_3"
+                android:contentDescription="@string/desc"/>
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_kor_4"
+                android:contentDescription="@string/desc"/>
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_kor_5"
+                android:contentDescription="@string/desc"/>
+            
+            
+        </LinearLayout>
         
     </ScrollView>
+    
+    <ScrollView
+        android:layout_width="351dp"
+        android:layout_height="301dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="904dp"
+        android:layout_marginTop="333dp"
+        android:id="@+id/scrl_eng"
+        android:scrollbarThumbVertical="@drawable/scroll_movebar"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:fadeScrollbars="false"
+        android:scrollbarTrackVertical="@drawable/scrl_track"
+        >
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            
+            <ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_eng_1"
+                android:contentDescription="@string/desc"/>
+       	 	<ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_eng_2"
+                android:contentDescription="@string/desc"/>
+        	<ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_eng_3"
+                android:contentDescription="@string/desc"/>
+        	<ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_eng_4"
+                android:contentDescription="@string/desc"/>
+        	<ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_eng_5"
+                android:contentDescription="@string/desc"/>
+        	<ImageView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@drawable/h_text_eng_6"
+                android:contentDescription="@string/desc"/>
+            
+        </LinearLayout>
         
+        </ScrollView>
+    
+    
+    <Button
+        android:id="@+id/btn_lang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1051dp"
+        android:layout_marginTop="641dp"/>
+    
+    <SeekBar
+        android:layout_width="577dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/sb_video"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="644dp"
+        android:layout_marginLeft="159dp"
+        android:progressDrawable="@drawable/sb_progress"
+        android:thumb="@drawable/sb_control"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        />
+    
+    <Button
+        android:id="@+id/btn_playpause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="621dp"
+        >
+        
+    </Button>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_time"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:layout_marginLeft="783dp"
+        android:layout_marginTop="642dp"
+        ></TextView>
     
 </RelativeLayout>
