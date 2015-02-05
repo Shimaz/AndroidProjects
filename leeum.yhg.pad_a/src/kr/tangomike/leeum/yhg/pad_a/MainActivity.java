@@ -2,8 +2,11 @@ package kr.tangomike.leeum.yhg.pad_a;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.ViewGroup.LayoutParams;
@@ -18,6 +21,11 @@ public class MainActivity extends Activity {
 	private Button btnStory;
 	private Button btnLang;
 	private ScrollView scrl;
+	
+	private Handler mHandler;
+	private long tCounter = 0;
+	private long screenSaverOnTime = 60;
+	private boolean isCounting = false;
 	
 	private boolean isKorean;
 	
@@ -87,6 +95,50 @@ public class MainActivity extends Activity {
 		});
         
         scrl = (ScrollView)findViewById(R.id.scrl_content);
+        scrl.setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				// TODO Auto-generated method stub
+				
+				tCounter = 0;
+				
+				return false;
+			}
+		});
+        
+        
+        mHandler = new Handler() {
+        	public void handleMessage(Message msg){
+        		tCounter++;
+        		
+
+        		
+        		
+
+        			
+        		if(tCounter <= screenSaverOnTime){
+
+            		mHandler.sendEmptyMessageDelayed(0, 1000);
+            		android.util.Log.i("tCounter", "" + tCounter);
+            	
+        		}else if(tCounter > screenSaverOnTime){
+        			// TODO 
+        			tCounter = 0;
+        			mHandler.removeMessages(0);
+        			
+        			
+        			// Run ScreenSaver Activity
+        			isCounting = false;
+        			overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
+        			finish();
+        		}
+        		
+        		
+        	}
+        };
+        
+        mHandler.sendEmptyMessage(0);
         
         
 		setContent(PROFILE, isKorean);
@@ -94,6 +146,9 @@ public class MainActivity extends Activity {
 	
 	
 	private void setContent(int tab, boolean lang){
+		
+		tCounter = 0;
+		
 		switch(tab){
 			case PROFILE:
 				
@@ -237,6 +292,16 @@ public class MainActivity extends Activity {
 			default:
 				break;
 		}
+		
+	}
+	
+	
+	@Override
+	protected void onDestroy(){
+		super.onDestroy();
+		
+		mHandler.removeMessages(0);
+		
 		
 	}
 }
