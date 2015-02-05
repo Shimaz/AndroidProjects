@@ -1,4 +1,4 @@
-package kr.tangomike.leeum.yhg.pad_e;
+package kr.tangomike.leeum.yhg.pad_c;
 
 
 import android.app.Activity;
@@ -26,7 +26,7 @@ import android.widget.SeekBar;
 public class CurlActivity extends Activity {
 
 	private CurlView mCurlView;
-    private int[] mBitmapIds = {R.drawable.e_kor_1, R.drawable.e_kor_2, R.drawable.e_kor_3, R.drawable.e_kor_4, R.drawable.e_kor_5, R.drawable.e_kor_6, R.drawable.e_kor_7, R.drawable.e_kor_8, R.drawable.e_kor_9, R.drawable.e_kor_10, R.drawable.e_kor_11, R.drawable.e_kor_12, R.drawable.e_kor_13, R.drawable.e_kor_14};
+    private int[] mBitmapIds = {R.drawable.c_kor_1, R.drawable.c_kor_2, R.drawable.c_kor_3, R.drawable.c_kor_4, R.drawable.c_kor_5, R.drawable.c_kor_6, R.drawable.c_kor_7, R.drawable.c_kor_8, R.drawable.c_kor_9};
 
     private SeekBar sBar;
     
@@ -127,9 +127,10 @@ public class CurlActivity extends Activity {
         			tCounter = 0;
         			mHandler.removeMessages(0);
         			
-        			finish();
+        			Intent intent = new Intent(CurlActivity.this, CurlActivity.class);
+        			startActivity(intent);
         			overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
-        			startActivity(getIntent());
+        			finish();
         		}
         		
         		

@@ -1,4 +1,4 @@
-package kr.tangomike.leeum.yhg.pad_e;
+package kr.tangomike.leeum.yhg.pad_c;
 
 
 import android.app.Activity;
@@ -23,33 +23,29 @@ import android.widget.SeekBar;
  * 
  * @author harism
  */
-public class CurlActivity extends Activity {
+public class CurlEngActivity extends Activity {
 
 	private CurlView mCurlView;
-    private int[] mBitmapIds = {R.drawable.e_kor_1, R.drawable.e_kor_2, R.drawable.e_kor_3, R.drawable.e_kor_4, R.drawable.e_kor_5, R.drawable.e_kor_6, R.drawable.e_kor_7, R.drawable.e_kor_8, R.drawable.e_kor_9, R.drawable.e_kor_10, R.drawable.e_kor_11, R.drawable.e_kor_12, R.drawable.e_kor_13, R.drawable.e_kor_14};
+	private int[] mBitmapIds = {R.drawable.c_eng_1, R.drawable.c_eng_2, R.drawable.c_eng_3, R.drawable.c_eng_4, R.drawable.c_eng_5, R.drawable.c_eng_6, R.drawable.c_eng_7, R.drawable.c_eng_8, R.drawable.c_eng_9, R.drawable.c_eng_10, R.drawable.c_eng_11};
 
     private SeekBar sBar;
     
     private Handler mHandler;
-
+    
     private int tCounter;
     private static final int screenSaverOnTime = 120;
-    private boolean isCounting;
-    
     
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
-		tCounter = 0;
-		isCounting = false;
 		
 	
         /*Disable Sleep Mode */
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-
+        tCounter = 0;
 
 		int index = 0;
 		if (getLastNonConfigurationInstance() != null) {
@@ -72,12 +68,12 @@ public class CurlActivity extends Activity {
 
 
         final Button btnTmp = (Button)findViewById(R.id.btn_lang);
-        btnTmp.setBackgroundResource(R.drawable.btn_eng);
+        btnTmp.setBackgroundResource(R.drawable.btn_kor);
         btnTmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(CurlActivity.this, CurlEngActivity.class);
+                Intent intent = new Intent(CurlEngActivity.this, CurlActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
                 finish();
@@ -127,21 +123,20 @@ public class CurlActivity extends Activity {
         			tCounter = 0;
         			mHandler.removeMessages(0);
         			
-        			finish();
+        			Intent intent = new Intent(CurlEngActivity.this, CurlActivity.class);
+        			startActivity(intent);
         			overridePendingTransition(R.anim.fade_in_short, R.anim.fade_out_short);
-        			startActivity(getIntent());
+        			finish();
         		}
         		
         		
         	}
         };
         
-//        mHandler.sendEmptyMessage(0);
+        mHandler.sendEmptyMessage(0);
 
 	}
-
 	
-
 
 
 	@Override
@@ -234,21 +229,20 @@ public class CurlActivity extends Activity {
 		public void updatePage(CurlPage page, int width, int height, int index) {
 
 
+			tCounter = 0;
+			
             Bitmap front = loadBitmap(width, height, index);
             page.setTexture(front, CurlPage.SIDE_FRONT);
             page.setColor(Color.rgb(180,180,180), CurlPage.SIDE_BACK);
 
  
             android.util.Log.i("index", "" + mCurlView.getCurrentIndex() + " " +  mCurlView.getCurlState() + " " + mCurlView.getCurlTarget());
-            
-            tCounter = 0;
-            if(!isCounting){
-            	mHandler.sendEmptyMessageDelayed(0, 1000);
-            	isCounting = true;
-            }
 
+            
+            
 		}
 
+	
 
 
 	}
