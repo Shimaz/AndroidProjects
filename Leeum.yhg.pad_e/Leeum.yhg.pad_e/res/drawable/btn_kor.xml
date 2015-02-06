@@ -4,23 +4,23 @@
     <item
         android:state_focused="true"
         android:state_pressed="false"
-        android:drawable="@drawable/a_btn_kor_normal"
+        android:drawable="@drawable/btn_kor_normal"
         />
 
     <item
         android:state_focused="true"
         android:state_pressed="true"
-        android:drawable="@drawable/a_btn_kor_push"
+        android:drawable="@drawable/btn_kor_push"
         />
 
     <item
         android:state_focused="false"
         android:state_pressed="true"
-        android:drawable="@drawable/a_btn_kor_push"
+        android:drawable="@drawable/btn_kor_push"
         />
 
     <item
-        android:drawable="@drawable/a_btn_kor_normal"
+        android:drawable="@drawable/btn_kor_normal"
         />
 
 

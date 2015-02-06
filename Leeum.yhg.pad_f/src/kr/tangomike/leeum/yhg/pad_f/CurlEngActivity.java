@@ -26,10 +26,10 @@ import android.widget.SeekBar;
 public class CurlEngActivity extends Activity {
 
 	private CurlView mCurlView;
-	private int[] mBitmapIds = {R.drawable.f_eng_1, R.drawable.f_eng_2, R.drawable.f_eng_3, R.drawable.f_eng_4, R.drawable.f_eng_5, R.drawable.f_eng_6, R.drawable.f_eng_7, R.drawable.f_eng_8, R.drawable.f_eng_9, R.drawable.f_eng_10, R.drawable.f_eng_11,
-			R.drawable.f_eng_12, R.drawable.f_eng_13, R.drawable.f_eng_14, R.drawable.f_eng_15, R.drawable.f_eng_16, R.drawable.f_eng_17, R.drawable.f_eng_18, R.drawable.f_eng_19, R.drawable.f_eng_20};
+	private int[] mBitmapIds = {R.drawable.f_eng_0, R.drawable.f_eng_1, R.drawable.f_eng_2, R.drawable.f_eng_3, R.drawable.f_eng_4, R.drawable.f_eng_5, R.drawable.f_eng_6, R.drawable.f_eng_7, R.drawable.f_eng_8, R.drawable.f_eng_9, R.drawable.f_eng_10, R.drawable.f_eng_11,
+			R.drawable.f_eng_12, R.drawable.f_eng_13, R.drawable.f_eng_14, R.drawable.f_eng_15, R.drawable.f_eng_16, R.drawable.f_eng_17};
 
-    private SeekBar sBar;
+//    private SeekBar sBar;
     
     private Handler mHandler;
     
@@ -39,7 +39,7 @@ public class CurlEngActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.main_alt);
 		
 		
 	
@@ -82,29 +82,29 @@ public class CurlEngActivity extends Activity {
             }
         });
 
-        sBar = (SeekBar)findViewById(R.id.prgs_page);
-        sBar.setMax(mBitmapIds.length - 1);
-        sBar.setProgress(0);
-        
-        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-            public void onStopTrackingTouch(SeekBar seekbar){
-
-                android.util.Log.i("seekbar", "" + seekbar.getProgress());
-
-                mCurlView.setCurrentIndex(seekbar.getProgress());
-
-            }
-
-            public void onStartTrackingTouch(SeekBar seekbar){
-
-            }
-
-            public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser){
-
-            }
-        });
-   
-        
+//        sBar = (SeekBar)findViewById(R.id.prgs_page);
+//        sBar.setMax(mBitmapIds.length - 1);
+//        sBar.setProgress(0);
+//        
+//        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+//            public void onStopTrackingTouch(SeekBar seekbar){
+//
+//                android.util.Log.i("seekbar", "" + seekbar.getProgress());
+//
+//                mCurlView.setCurrentIndex(seekbar.getProgress());
+//
+//            }
+//
+//            public void onStartTrackingTouch(SeekBar seekbar){
+//
+//            }
+//
+//            public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser){
+//
+//            }
+//        });
+//   
+//        
         mHandler = new Handler() {
         	public void handleMessage(Message msg){
         		tCounter++;

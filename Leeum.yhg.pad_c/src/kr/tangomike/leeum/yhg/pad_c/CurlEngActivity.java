@@ -26,9 +26,9 @@ import android.widget.SeekBar;
 public class CurlEngActivity extends Activity {
 
 	private CurlView mCurlView;
-	private int[] mBitmapIds = {R.drawable.c_eng_1, R.drawable.c_eng_2, R.drawable.c_eng_3, R.drawable.c_eng_4, R.drawable.c_eng_5, R.drawable.c_eng_6, R.drawable.c_eng_7, R.drawable.c_eng_8, R.drawable.c_eng_9, R.drawable.c_eng_10, R.drawable.c_eng_11};
+	private int[] mBitmapIds = {R.drawable.c_eng_1, R.drawable.c_eng_2, R.drawable.c_eng_3, R.drawable.c_eng_4, R.drawable.c_eng_5, R.drawable.c_eng_6, R.drawable.c_eng_7, R.drawable.c_eng_8, R.drawable.c_eng_9, R.drawable.c_eng_10};
 
-    private SeekBar sBar;
+//    private SeekBar sBar;
     
     private Handler mHandler;
     
@@ -38,7 +38,7 @@ public class CurlEngActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.main_alt);
 		
 		
 	
@@ -81,27 +81,27 @@ public class CurlEngActivity extends Activity {
             }
         });
 
-        sBar = (SeekBar)findViewById(R.id.prgs_page);
-        sBar.setMax(mBitmapIds.length - 1);
-        sBar.setProgress(0);
-        
-        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
-            public void onStopTrackingTouch(SeekBar seekbar){
-
-                android.util.Log.i("seekbar", "" + seekbar.getProgress());
-
-                mCurlView.setCurrentIndex(seekbar.getProgress());
-
-            }
-
-            public void onStartTrackingTouch(SeekBar seekbar){
-
-            }
-
-            public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser){
-
-            }
-        });
+//        sBar = (SeekBar)findViewById(R.id.prgs_page);
+//        sBar.setMax(mBitmapIds.length - 1);
+//        sBar.setProgress(0);
+//        
+//        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+//            public void onStopTrackingTouch(SeekBar seekbar){
+//
+//                android.util.Log.i("seekbar", "" + seekbar.getProgress());
+//
+//                mCurlView.setCurrentIndex(seekbar.getProgress());
+//
+//            }
+//
+//            public void onStartTrackingTouch(SeekBar seekbar){
+//
+//            }
+//
+//            public void onProgressChanged(SeekBar seekbar, int progress, boolean fromUser){
+//
+//            }
+//        });
    
         
         mHandler = new Handler() {
@@ -238,7 +238,6 @@ public class CurlEngActivity extends Activity {
  
             android.util.Log.i("index", "" + mCurlView.getCurrentIndex() + " " +  mCurlView.getCurlState() + " " + mCurlView.getCurlTarget());
 
-            
             
 		}
 

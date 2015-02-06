@@ -186,4 +186,23 @@
         android:layout_marginTop="642dp"
         ></TextView>
     
+        <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/b_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="931dp"
+        android:layout_marginTop="310dp"
+        android:contentDescription="@string/desc"/>
+    
+    <ImageView
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:background="@drawable/arrow_line"
+    	android:layout_marginLeft="1249dp"
+    	android:layout_marginTop="640dp"
+    	android:contentDescription="@string/desc"
+    	></ImageView>
+    
 </RelativeLayout>

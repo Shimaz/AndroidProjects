@@ -15,7 +15,6 @@
         android:hardwareAccelerated="true" >
         <activity
             android:name="kr.tangomike.leeum.yhg.pad_f.MainActivity"
-            android:label="@string/app_name"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             
         </activity>
@@ -39,11 +38,6 @@
             android:name="kr.tangomike.leeum.yhg.pad_f.CurlEngActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:screenOrientation="reversePortrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             
         </activity>
         
