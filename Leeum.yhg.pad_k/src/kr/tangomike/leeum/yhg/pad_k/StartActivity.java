@@ -28,7 +28,7 @@ public class StartActivity extends Activity {
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		
 		
-//		rl.setBackgroundResource(R.drawable.b_cover);
+		rl.setBackgroundResource(R.drawable.cover);
 		
 		rl.setOnTouchListener(new OnTouchListener(){
 
