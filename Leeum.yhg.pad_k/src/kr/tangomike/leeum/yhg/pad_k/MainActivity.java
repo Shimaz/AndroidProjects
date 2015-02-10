@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 
 @SuppressLint("HandlerLeak")
 public class MainActivity extends Activity {
@@ -92,8 +93,14 @@ public class MainActivity extends Activity {
         			
         			
         			// Run ScreenSaver Activity
-        			mPager.setCurrentItem(0, true);
+//        			mPager.setCurrentItem(0, true);
         			isCounting = false;
+        			Intent intent = new Intent(MainActivity.this, StartActivity.class);
+        			startActivity(intent);
+        			overridePendingTransition(R.anim.fade_out_short, R.anim.fade_in_short);
+        			finish();
+        			
+        			
         		}
         		
         		
