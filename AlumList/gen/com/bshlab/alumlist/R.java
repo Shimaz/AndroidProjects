@@ -23,8 +23,8 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int btn_bookmark=0x7f020000;
@@ -43,13 +43,13 @@ public final class R {
         public static final int img_start=0x7f02000d;
     }
     public static final class id {
-        public static final int btn_bookmark=0x7f080005;
-        public static final int btn_info=0x7f080002;
-        public static final int btn_list=0x7f080003;
-        public static final int btn_settings=0x7f080004;
-        public static final int iv_logo=0x7f080006;
-        public static final int rl_title_bar=0x7f080000;
-        public static final int tv_title=0x7f080001;
+        public static final int btn_bookmark=0x7f090005;
+        public static final int btn_info=0x7f090002;
+        public static final int btn_list=0x7f090003;
+        public static final int btn_settings=0x7f090004;
+        public static final int iv_logo=0x7f090006;
+        public static final int rl_title_bar=0x7f090000;
+        public static final int tv_title=0x7f090001;
     }
     public static final class layout {
         public static final int layout_bookmark=0x7f030000;
@@ -58,15 +58,18 @@ public final class R {
         public static final int layout_settings=0x7f030003;
         public static final int layout_start=0x7f030004;
     }
+    public static final class raw {
+        public static final int ssu_health_db=0x7f050000;
+    }
     public static final class string {
-        public static final int action_settings=0x7f060002;
-        public static final int app_name=0x7f060000;
-        public static final int desc=0x7f060003;
-        public static final int hello_world=0x7f060001;
-        public static final int title_bookmark=0x7f060006;
-        public static final int title_info=0x7f060004;
-        public static final int title_list=0x7f060005;
-        public static final int title_settings=0x7f060007;
+        public static final int action_settings=0x7f070002;
+        public static final int app_name=0x7f070000;
+        public static final int desc=0x7f070003;
+        public static final int hello_world=0x7f070001;
+        public static final int title_bookmark=0x7f070006;
+        public static final int title_info=0x7f070004;
+        public static final int title_list=0x7f070005;
+        public static final int title_settings=0x7f070007;
     }
     public static final class style {
         /** 
@@ -90,10 +93,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
 }

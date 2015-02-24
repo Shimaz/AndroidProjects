@@ -9,8 +9,9 @@ package kr.tangomike.leeum.yhg.pad_b;
 
 public final class R {
     public static final class anim {
-        public static final int fade_in_short=0x7f040000;
-        public static final int fade_out_short=0x7f040001;
+        public static final int fade_in_out=0x7f040000;
+        public static final int fade_in_short=0x7f040001;
+        public static final int fade_out_short=0x7f040002;
     }
     public static final class attr {
     }
@@ -64,6 +65,9 @@ public final class R {
         public static final int dot_unselected=0x7f020024;
         public static final int ic_launcher=0x7f020025;
         public static final int icon_72=0x7f020026;
+        public static final int idletime_start_btn=0x7f020027;
+        public static final int scrl_track=0x7f020028;
+        public static final int scroll_movebar=0x7f020029;
     }
     public static final class id {
         public static final int action_settings=0x7f090008;

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pnf.pen.kobaco"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+    
+    
+    
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" /> 
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.GET_TASK" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.BLUETOOTH" /> 
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BATTERY_STATS"/>
+	
+
+    <application
+        android:name="com.pnf.pen.kobaco.OSCBinder"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:hardwareAccelerated="true" >
+        <activity
+            android:name="com.pnf.pen.kobaco.BaseActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        
+        
+        <activity 
+            android:name="com.pnf.pen.kobaco.FirstStrokeActivity"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            
+        </activity>
+        
+        
+        <activity 
+            android:name="com.pnf.pen.kobaco.ResetActivity"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            
+        </activity>
+        
+        
+        <activity 
+            android:name="com.pnf.pen.kobaco.SendFileActivity"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            
+        </activity>
+        
+        
+        
+        <activity
+            android:name="com.pnf.pen.kobaco.SelectActivity"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            
+        </activity>
+        
+        
+        <activity
+            android:name="com.pnf.pen.kobaco.DetailActivity"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            
+        </activity>
+        
+        
+        <activity
+            android:name="com.pnf.pen.kobaco.LeeumMainActivity"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            
+        </activity>
+        
+        <activity
+            android:name="com.pnf.pen.kobaco.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        
+        <activity
+            android:name="com.pnf.pen.calibration.CalibrationPointActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        
+        <activity
+            android:name="com.pnf.pen.drawingview.DrawViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        
+        <activity
+            android:name="com.pnf.pen.timetestview.TimeTestViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+        
+        <activity
+            android:name="com.pnf.pen.thresholdview.ThresholdViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="reversePortait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+        </activity>
+    </application>
+	
+    
+</manifest>

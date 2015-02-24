@@ -1,0 +1,1202 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5" >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FF7f7f7f" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="drawingBtnClicked"
+                            android:text="@string/MainActivity_Text_Value_01" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="calibrationBtnClicked"
+                            android:text="@string/MainActivity_Text_Value_02" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="stopPenBtnClicked"
+                            android:text="@string/MainActivity_Text_Value_03" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="restartPenBtnClicked"
+                            android:text="@string/MainActivity_Text_Value_04" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:visibility="gone" >
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="timeTestBtnClicked"
+                            android:text="@string/MainActivity_Text_Value_05" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1" >
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="clearLogBtnClicked"
+                            android:text="@string/MainActivity_Text_Value_06" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="thresholdBtnClicked"
+                            android:singleLine="true"
+                            android:text="@string/MainActivity_Text_Value_07"
+                            android:visibility="gone" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#FF7f7f7f" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:background="#FFf0f0f0" >
+
+                    <ScrollView
+                        android:id="@+id/writeLogScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fillViewport="true" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:id="@+id/writeLogTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="#FF000000"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+                    </ScrollView>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFffffff"
+                    android:orientation="vertical"
+                    android:visibility="gone" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#FFffffff" >
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="8dp"
+                            android:layout_weight="1" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center"
+                                    android:layout_weight="1"
+                                    android:text="@string/MainActivity_Text_Value_08"
+                                    android:textColor="#FF000000" />
+
+                                <TextView
+                                    android:id="@+id/sensorDisValueTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/box_bg_01"
+                                    android:gravity="center"
+                                    android:singleLine="true"
+                                    android:text="0"
+                                    android:textColor="#FF000000" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center"
+                                    android:layout_weight="1"
+                                    android:text="@string/MainActivity_Text_Value_09"
+                                    android:textColor="#FF000000" />
+
+                                <TextView
+                                    android:id="@+id/irGapValueTextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/box_bg_01"
+                                    android:gravity="center"
+                                    android:paddingLeft="10dp"
+                                    android:singleLine="true"
+                                    android:text="0"
+                                    android:textColor="#FF000000" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="2dp" >
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left|center"
+                            android:layout_marginRight="20dp"
+                            android:background="@android:drawable/btn_default_small"
+                            android:onClick="applyBtnClicked"
+                            android:text="@string/COMMON_APPLY"
+                            android:textColor="#FF000000" />
+                    </FrameLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" >
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FF7f7f7f" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:orientation="vertical" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_11"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/modelCodeValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_12"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/hwVerValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_13"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/mcu1VerValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_14"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/aliveSecValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_15"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/mcu2VerValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_16"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/temperatureValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_17"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/packetCountValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <Button
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:background="@android:drawable/btn_default_small"
+                                        android:onClick="packetCountClearClicked"
+                                        android:text="@string/COMMON_CLEAR"
+                                        android:textColor="#FF000000" />
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_19"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/errXCntValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_20"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/errYCntValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_21"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/pressureValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_22"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/curThresholdValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_01"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:text="@string/MainActivity_Text_Value_23"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/statusValueTextView"
+                                            android:layout_width="50dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:layout_marginLeft="4dp"
+                                            android:layout_marginRight="4dp"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_marginLeft="8dp"
+                                            android:text="@string/MainActivity_Text_Value_24"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_25"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/rawXValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_26"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/rawYValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_27"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/convXValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_28"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/convYValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_02"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFffffff" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:orientation="vertical" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_29"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/downCountValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_01"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_30"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/moveCountValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_01"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="1" >
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginRight="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_31"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/upCountValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_01"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="4dp"
+                                    android:layout_weight="1" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent" >
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:text="@string/MainActivity_Text_Value_32"
+                                            android:textColor="#FF000000" />
+
+                                        <TextView
+                                            android:id="@+id/totalCountValueTextView"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center"
+                                            android:layout_weight="1"
+                                            android:background="@drawable/box_bg_01"
+                                            android:gravity="center"
+                                            android:singleLine="true"
+                                            android:text="0"
+                                            android:textColor="#FF000000" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:layout_weight="2" >
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical" >
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="4dp"
+                                        android:layout_weight="1" >
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent" >
+
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="left|center"
+                                                android:layout_weight="1"
+                                                android:text="@string/MainActivity_Text_Value_33"
+                                                android:textColor="#FF000000" />
+
+                                            <TextView
+                                                android:id="@+id/kbyteValueTextView"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="left|center"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/box_bg_01"
+                                                android:gravity="center"
+                                                android:singleLine="true"
+                                                android:text="0"
+                                                android:textColor="#FF000000" />
+                                        </LinearLayout>
+                                    </FrameLayout>
+
+                                    <FrameLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="4dp"
+                                        android:layout_weight="1" >
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent" >
+
+                                            <TextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="left|center"
+                                                android:layout_weight="1"
+                                                android:text="@string/MainActivity_Text_Value_34"
+                                                android:textColor="#FF000000" />
+
+                                            <TextView
+                                                android:id="@+id/byteValueTextView"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="left|center"
+                                                android:layout_weight="1"
+                                                android:background="@drawable/box_bg_01"
+                                                android:gravity="center"
+                                                android:singleLine="true"
+                                                android:text="0"
+                                                android:textColor="#FF000000" />
+                                        </LinearLayout>
+                                    </FrameLayout>
+
+                                </LinearLayout>
+
+                                <FrameLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" >
+
+                                    <Button
+                                        style="?android:attr/buttonStyleSmall"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:onClick="countClearClicked"
+                                        android:text="@string/COMMON_CLEAR" />
+
+                                </FrameLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </FrameLayout>
+                </LinearLayout>
+
+            </ScrollView>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

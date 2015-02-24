@@ -26,8 +26,8 @@ import android.widget.SeekBar;
 public class CurlEngActivity extends Activity {
 
 	private CurlView mCurlView;
-	private int[] mBitmapIds = {R.drawable.f_eng_0, R.drawable.f_eng_1, R.drawable.f_eng_2, R.drawable.f_eng_3, R.drawable.f_eng_4, R.drawable.f_eng_5, R.drawable.f_eng_6, R.drawable.f_eng_7, R.drawable.f_eng_8, R.drawable.f_eng_9, R.drawable.f_eng_10, R.drawable.f_eng_11,
-			R.drawable.f_eng_12, R.drawable.f_eng_13, R.drawable.f_eng_14, R.drawable.f_eng_15, R.drawable.f_eng_16, R.drawable.f_eng_17};
+	private int[] mBitmapIds = {R.drawable.f_eng_1, R.drawable.f_eng_2, R.drawable.f_eng_3, R.drawable.f_eng_4, R.drawable.f_eng_5, R.drawable.f_eng_6, R.drawable.f_eng_7, R.drawable.f_eng_8, R.drawable.f_eng_9, R.drawable.f_eng_10, R.drawable.f_eng_11,
+			R.drawable.f_eng_12, R.drawable.f_eng_13, R.drawable.f_eng_14, R.drawable.f_eng_15, R.drawable.f_eng_16, R.drawable.f_eng_17, R.drawable.f_eng_18};
 
 //    private SeekBar sBar;
     
