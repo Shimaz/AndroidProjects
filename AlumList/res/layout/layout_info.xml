@@ -3,26 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
-    <RelativeLayout 
-        android:id="@+id/rl_title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:background="#59B0D6">
-        <TextView
-            android:id="@+id/tv_title"
-            android:text="@string/title_info"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            android:layout_height="40dp"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            ></TextView>
-        
-        
-    </RelativeLayout>
+
     
     <RelativeLayout
         android:id="@+id/rl_content"
@@ -30,7 +11,7 @@
         android:layout_above="@+id/ll_menu"
         android:background="#ffffff"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">"
+        android:layout_width="match_parent">
         
         
 
@@ -87,7 +68,51 @@
         
     </RelativeLayout>
     
-
+    <RelativeLayout 
+        android:id="@+id/rl_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#59B0D6"
+        >
+        <TextView
+            android:id="@+id/tv_title"
+            android:text="@string/title_info"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            ></TextView>
+        
+        
+        <Button
+            android:id="@+id/btn_sub_menu"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_info_menu"
+            />
+        
+    </RelativeLayout>
+    
+    
+    
+    <LinearLayout 
+        android:id="@+id/ll_sub_menu"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:layout_marginTop="45dp">
+        
+    </LinearLayout>
     
     
     <LinearLayout 
