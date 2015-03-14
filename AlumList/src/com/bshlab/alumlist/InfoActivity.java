@@ -9,11 +9,15 @@ import android.widget.Button;
 
 public class InfoActivity extends Activity {
 	
+	private int depthStatus = 0;
+	
+	
 	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
 		setContentView(R.layout.layout_info);
+		depthStatus = 0;
 		
 		/*
 		 * menu button setup
@@ -28,7 +32,65 @@ public class InfoActivity extends Activity {
 		Button btnSettings = (Button)findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(menuListener);
 		
+		
+		Button btnInfo01 = (Button)findViewById(R.id.btn_info_01);
+		Button btnInfo02 = (Button)findViewById(R.id.btn_info_02);
+		Button btnInfo03 = (Button)findViewById(R.id.btn_info_03);
+		Button btnInfo04 = (Button)findViewById(R.id.btn_info_04);
+		
+		btnInfo01.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				showInfo(1);
+				
+			}
+		});
+		
+		btnInfo02.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				showInfo(2);
+			}
+		});
+		
+		btnInfo03.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				showInfo(3);
+				
+			}
+		});
+		
+		btnInfo04.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				showInfo(4);
+			}
+		});
+			
 	}
+	
+	/* 
+	 * Show Information Screen
+	 */
+	
+	private void showInfo(int screenNo){
+		
+		
+		
+	}
+	
 	
 	
 	/*

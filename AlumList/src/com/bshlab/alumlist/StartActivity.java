@@ -59,7 +59,7 @@ public class StartActivity extends Activity {
 		
 		
 		ivLogo = (ImageView)findViewById(R.id.iv_logo);
-		ivLogo.setBackgroundResource(R.drawable.img_start);
+		ivLogo.setBackgroundResource(R.drawable.img_intro);
 		ivLogo.startAnimation(fade);
 		
 		

@@ -30,7 +30,60 @@
         android:layout_above="@+id/ll_menu"
         android:background="#ffffff"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent">"
+        
+        
+
+        <Button
+            android:id="@+id/btn_info_01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="175dp"
+            android:background="@drawable/btn_info_01" >
+
+        </Button>
+            
+        
+        <Button
+            android:id="@+id/btn_info_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"
+            android:background="@drawable/btn_info_02" >
+
+        </Button>
+        
+        <Button
+            android:id="@+id/btn_info_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="325dp"
+            android:background="@drawable/btn_info_03" >
+
+        </Button>
+        
+        <Button
+            android:id="@+id/btn_info_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="400dp"
+            android:background="@drawable/btn_info_04" >
+
+        </Button>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/btn_info_01"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="73dp"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/img_info_logo" />
         
     </RelativeLayout>
     
@@ -61,7 +114,7 @@
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:contentDescription="@string/desc">
                     
-                </ImageView>"
+                </ImageView>
                 
             </LinearLayout>
             <LinearLayout 
