@@ -8,12 +8,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class ListActivity extends Activity {
+	private DBHelper dbHelper;
 	
 	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
 		setContentView(R.layout.layout_list);
+		
+		/*
+		 * Initailize DB 
+		 */
+		
+		dbHelper = new DBHelper(this);
 		
 		/*
 		 * menu button setup
