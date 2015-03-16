@@ -1,6 +1,9 @@
 package com.bshlab.alumlist;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -75,4 +78,31 @@ public class DBAdapter
              throw mSQLException;
          }
      }
+     
+     
+     public List<ListData> getAllList(){
+    	 
+    	 List<ListData> retList = new ArrayList<ListData>();
+    	 
+    	 String query = "SELECT * FROM alumlist";
+    	 Cursor cur = mDb.rawQuery(query, null);
+    	 
+    	 if(cur.moveToFirst()){
+    		 do{
+    			 ListData list = new ListData();
+    			 list.setID(cur.getInt(0));
+    			 list.setNotation(cur.getInt(1));
+    			 list.setName(cur.getString(2));
+    			 list.setMobile(cur.getString(3));
+    			 list.setEmail(cur.getString(4));
+    		 } while (cur.moveToNext());
+    		 
+    	 }
+    	 
+    	 
+    	 return retList;
+     }
+     
+     
+     
 }

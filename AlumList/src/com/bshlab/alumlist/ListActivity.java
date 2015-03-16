@@ -1,5 +1,8 @@
 package com.bshlab.alumlist;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -57,9 +60,13 @@ public class ListActivity extends Activity {
 				dbAdapter.open();
 				
 				
-				Cursor testData = dbAdapter.getTestData();
+//				Cursor testData = dbAdapter.getTestData();
 				
-				android.util.Log.i("shimaz", "" + testData.toString());
+				List<ListData> listAll = new ArrayList<ListData>();
+				
+				listAll = dbAdapter.getAllList();
+				
+				android.util.Log.i("shimaz", "" + listAll.toString());
 				
 				dbAdapter.close();
 				
