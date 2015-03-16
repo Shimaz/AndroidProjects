@@ -2,13 +2,17 @@ package com.bshlab.alumlist;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class ListActivity extends Activity {
 	private DBHelper dbHelper;
+	private DBAdapter dbAdapter;
 	
 	
 	@Override
@@ -21,6 +25,8 @@ public class ListActivity extends Activity {
 		 */
 		
 		dbHelper = new DBHelper(this);
+		dbAdapter = new DBAdapter(this);
+		
 		
 		/*
 		 * menu button setup
@@ -34,6 +40,38 @@ public class ListActivity extends Activity {
 		
 		Button btnSettings = (Button)findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(menuListener);
+		
+		
+		RelativeLayout rr = (RelativeLayout)findViewById(R.id.rl_title_bar);
+		
+		Button btnTest = new Button(this);
+		btnTest.setText("test");
+		btnTest.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		btnTest.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+			
+				dbAdapter.createDatabase();
+				dbAdapter.open();
+				
+				
+				Cursor testData = dbAdapter.getTestData();
+				
+				android.util.Log.i("shimaz", "" + testData.toString());
+				
+				dbAdapter.close();
+				
+				
+			}
+		});
+		
+		rr.addView(btnTest);
+		
+		
+		
+		
 		
 	}
 	
