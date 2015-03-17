@@ -80,9 +80,9 @@ public class DBAdapter
      }
      
      
-     public List<ListData> getAllList(){
+     public ArrayList<ListData> getAllList(){
     	 
-    	 List<ListData> retList = new ArrayList<ListData>();
+    	 ArrayList<ListData> retList = new ArrayList<ListData>();
     	 
     	 String query = "SELECT * FROM alumlist";
     	 Cursor cur = mDb.rawQuery(query, null);
@@ -94,7 +94,9 @@ public class DBAdapter
     			 list.setNotation(cur.getInt(1));
     			 list.setName(cur.getString(2));
     			 list.setMobile(cur.getString(3));
-    			 list.setEmail(cur.getString(4));
+    			 list.setCompany(cur.getString(4));
+    			 list.setEmail(cur.getString(7));
+    			 retList.add(list);
     		 } while (cur.moveToNext());
     		 
     	 }

@@ -4,19 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class ListActivity extends Activity {
-	private DBHelper dbHelper;
 	private DBAdapter dbAdapter;
+	private ArrayList<ListData> allList;
+	private ListView lvList;
 	
+	private ListAdapter listAdapter;
 	
 	@Override
 	protected void onCreate(Bundle sis){
@@ -27,9 +33,34 @@ public class ListActivity extends Activity {
 		 * Initailize DB 
 		 */
 		
-		dbHelper = new DBHelper(this);
 		dbAdapter = new DBAdapter(this);
 		
+		dbAdapter.createDatabase();
+		dbAdapter.open();
+		
+		allList = new ArrayList<ListData>();
+		allList = dbAdapter.getAllList();
+		
+		dbAdapter.close();
+		
+		
+		
+		/*
+		 * Initialize ListView
+		 */
+		
+
+		lvList = (ListView)findViewById(R.id.lv_list_all);
+//		final Runnable updateUI = new Runnable(){
+//			public void run(){
+//				ListActivity.this.listAdapter.notifyDataSetChanged();
+//			}
+//		};
+		
+		
+		listAdapter = new ListAdapter(this, R.layout.list_row, allList);
+		
+		lvList.setAdapter(listAdapter);
 		
 		/*
 		 * menu button setup
@@ -44,43 +75,17 @@ public class ListActivity extends Activity {
 		Button btnSettings = (Button)findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(menuListener);
 		
-		
-		RelativeLayout rr = (RelativeLayout)findViewById(R.id.rl_title_bar);
-		
-		Button btnTest = new Button(this);
-		btnTest.setText("test");
-		btnTest.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		btnTest.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-			
-				dbAdapter.createDatabase();
-				dbAdapter.open();
-				
-				
-//				Cursor testData = dbAdapter.getTestData();
-				
-				List<ListData> listAll = new ArrayList<ListData>();
-				
-				listAll = dbAdapter.getAllList();
-				
-				android.util.Log.i("shimaz", "" + listAll.toString());
-				
-				dbAdapter.close();
-				
-				
-			}
-		});
-		
-		rr.addView(btnTest);
-		
+
 		
 		
 		
 		
 	}
+	
+	
+	
+	
+	
 	
 	
 	/*
@@ -133,6 +138,89 @@ public class ListActivity extends Activity {
 			
 		}
 	};
+	
+	/*
+	 * ListView Adapter  
+	 */
+	
+	public class ListAdapter extends ArrayAdapter<ListData>{
+		
+		private ArrayList<ListData> arrList;
+		private Context context;
+		private int rowID;
+		
+		public ListAdapter(Context context, int rID, ArrayList<ListData> arrList){
+			super(context, rID, arrList);
+			this.context = context;
+			this.arrList = arrList;
+			this.rowID = rID;
+		}
+		
+		
+	
+	
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent){
+			View v = convertView;
+			if(v == null){
+				LayoutInflater vi = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				v = vi.inflate(this.rowID, null);
+				
+			}
+			
+			final ListData data = arrList.get(position);
+			if(data != null){
+				TextView tvName = (TextView)v.findViewById(R.id.tv_row_name);
+				TextView tvCompany = (TextView)v.findViewById(R.id.tv_row_company);
+				Button btnCall = (Button)v.findViewById(R.id.btn_list_call);
+				Button btnEmail = (Button)v.findViewById(R.id.btn_list_emaill);
+				if(tvName != null) tvName.setText(data.getName());
+				if(tvCompany != null) tvCompany.setText(data.getCompany());
+				btnEmail.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						 /* Create the Intent */
+						final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+						/* Fill it with Data */
+						emailIntent.setType("text/plain");
+						emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{data.getEmail()});
+						emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "제목");
+						emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "내용");
+
+						/* Send it off to the Activity-Chooser */
+						context.startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+						
+						
+					}
+				});
+				
+				btnCall.setOnClickListener(new View.OnClickListener() {
+					
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						
+						Intent callIntent = new Intent(Intent.ACTION_DIAL);
+					    callIntent.setData(Uri.parse("tel:" + data.getMobile()));
+					    
+					    
+					    
+					    startActivity(callIntent);
+						
+					}
+				});
+				
+			}
+			
+			
+			return v;
+		}
+	
+	
+	}
 	
 
 }

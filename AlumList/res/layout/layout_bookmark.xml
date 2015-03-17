@@ -25,9 +25,28 @@
         
     </RelativeLayout>
 
-    
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/rl_title_bar"
+        android:layout_above="@+id/ll_menu"
+        >
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="13sp"
+            android:textColor="#bbbbbb"
+            android:text="no boomark data found"
+            >
+            
+        </TextView>
+        
+    </RelativeLayout>
     
     <LinearLayout 
+       	android:id="@+id/ll_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"

@@ -6,17 +6,19 @@ public class ListData {
 	private String name;
 	private String mobile;
 	private String email;
+	private String company;
 	
 	public ListData(){
 		
 	}
 	
-	public ListData(int id, int notation, String name, String mobile, String email){
+	public ListData(int id, int notation, String name, String mobile, String email, String company){
 		this.id = id;
 		this.notation = notation;
 		this.name = name;
 		this.mobile = mobile;
 		this.email = email;
+		this.company = company;
 	}
 	
 	public int getID(){
@@ -39,6 +41,10 @@ public class ListData {
 		return this.email;
 	}
 	
+	public String getCompany(){
+		return this.company;
+	}
+	
 	public void setID(int id){
 		this.id = id;
 	}
@@ -58,5 +64,10 @@ public class ListData {
 
 	public void setEmail(String em){
 		this.email = em;
+	}
+	
+	public void setCompany(String comp){
+		this.company = comp;
+		
 	}
 }
