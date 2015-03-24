@@ -24,12 +24,12 @@ import android.app.*;
 import android.content.*;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.*;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-//import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 import android.hardware.*;
 import java.net.*;
@@ -44,7 +44,7 @@ import android.widget.FrameLayout;
  * @author Tobias Schwirten
  * @author Martin Kaltenbrunner
  */
-@SuppressLint("ClickableViewAccessibility")
+@SuppressLint({ "ClickableViewAccessibility", "HandlerLeak" })
 public class MainActivity extends Activity {
   
 	/**
@@ -96,13 +96,19 @@ public class MainActivity extends Activity {
 	
 	
 	
-	private ImageView iv01;
-	private ImageView iv02;
-	private ImageView iv03;
-	private ImageView iv04;
+	public long tCounter = 0;
+	public long screenSaverOnTime = 60;
+	private final int exitTime = 180;
+	Handler mHandler;
 	
 	
+	private ImageView ivLogo;
 	
+	
+	private Button btnInfo01;
+	private Button btnInfo02;
+	private Button btnInfo03;
+	private Button btnInfo04;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -136,12 +142,21 @@ public class MainActivity extends Activity {
 			public boolean onTouch(View arg0, MotionEvent arg1) {
 				// TODO Auto-generated method stub
 				
-				touchView.retriveTouchEvent(arg1);
-				iv01.setVisibility(View.INVISIBLE);
-				iv02.setVisibility(View.INVISIBLE);
-				iv03.setVisibility(View.INVISIBLE);
-				iv04.setVisibility(View.INVISIBLE);
+				tCounter = 0;
+				if(touchView.getScreenNumber() != 1){
+					touchView.setScreenNumber(1);
+					mHandler.sendEmptyMessage(0);
+					
+					btnInfo01.setBackgroundResource(R.drawable.btn01_up);
+					btnInfo02.setBackgroundResource(R.drawable.btn02_up);
+					btnInfo03.setBackgroundResource(R.drawable.btn03_up);
+					btnInfo04.setBackgroundResource(R.drawable.btn04_up);
+					
+				}
 				
+				
+				touchView.retriveTouchEvent(arg1);
+
 				return true;
 				
 			}
@@ -151,86 +166,116 @@ public class MainActivity extends Activity {
         
         
         
-        Button btnInfo01 = new Button(this);
+        btnInfo01 = new Button(this);
         btnInfo01.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo01.setText("Button 01");
-        btnInfo01.setX(700);
-        btnInfo01.setY(0);
+        btnInfo01.setBackgroundResource(R.drawable.btn01_up);
+        btnInfo01.setX(593);
+        btnInfo01.setY(171);
         btnInfo01.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				
-				iv01.setVisibility(View.VISIBLE);
-				iv02.setVisibility(View.INVISIBLE);
-				iv03.setVisibility(View.INVISIBLE);
-				iv04.setVisibility(View.INVISIBLE);
+				
+				
+				tCounter = 0;
+				if(touchView.getScreenNumber() == 0){
+					mHandler.sendEmptyMessage(0);
+				}
+				
 				touchView.setNavData(400, 600, 70, 2);
+				
+				btnInfo01.setBackgroundResource(R.drawable.btn01_down);
+				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
+				btnInfo03.setBackgroundResource(R.drawable.btn03_up);
+				btnInfo04.setBackgroundResource(R.drawable.btn04_up);
 				
 			}
 		});
         
         
         
-        Button btnInfo02 = new Button(this);
+        btnInfo02 = new Button(this);
         btnInfo02.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo02.setText("Button 02");
-        btnInfo02.setX(700);
-        btnInfo02.setY(100);
+        btnInfo02.setBackgroundResource(R.drawable.btn02_up);
+        btnInfo02.setX(593);
+        btnInfo02.setY(248);
         btnInfo02.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 		
-				iv01.setVisibility(View.INVISIBLE);
-				iv02.setVisibility(View.VISIBLE);
-				iv03.setVisibility(View.INVISIBLE);
-				iv04.setVisibility(View.INVISIBLE);
+				
+				
+				tCounter = 0;
+				if(touchView.getScreenNumber() == 0){
+					mHandler.sendEmptyMessage(0);
+				}
 				
 				touchView.setNavData(400, 600, 100, 3);
+				
+				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
+				btnInfo02.setBackgroundResource(R.drawable.btn02_down);
+				btnInfo03.setBackgroundResource(R.drawable.btn03_up);
+				btnInfo04.setBackgroundResource(R.drawable.btn04_up);
+				
 				
 			}
 		});
         
-        Button btnInfo03 = new Button(this);
+        btnInfo03 = new Button(this);
         btnInfo03.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo03.setText("Button 03");
-        btnInfo03.setX(700);
-        btnInfo03.setY(200);
+        btnInfo03.setBackgroundResource(R.drawable.btn03_up);
+        btnInfo03.setX(593);
+        btnInfo03.setY(325);
         btnInfo03.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 	
-				iv01.setVisibility(View.INVISIBLE);
-				iv02.setVisibility(View.INVISIBLE);
-				iv03.setVisibility(View.VISIBLE);
-				iv04.setVisibility(View.INVISIBLE);
 				
+				
+				
+				tCounter = 0;
+				if(touchView.getScreenNumber() == 0){
+					mHandler.sendEmptyMessage(0);
+				}
+			
 				touchView.setNavData(400, 600, 125, 4);
 				
+				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
+				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
+				btnInfo03.setBackgroundResource(R.drawable.btn03_down);
+				btnInfo04.setBackgroundResource(R.drawable.btn04_up);
 			}
 		});
         
-        Button btnInfo04 = new Button(this);
+        btnInfo04 = new Button(this);
         btnInfo04.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo04.setText("Button 04");
-        btnInfo04.setX(700);
-        btnInfo04.setY(300);
+        btnInfo04.setBackgroundResource(R.drawable.btn04_up);
+        btnInfo04.setX(593);
+        btnInfo04.setY(402);
         btnInfo04.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				iv01.setVisibility(View.INVISIBLE);
-				iv02.setVisibility(View.INVISIBLE);
-				iv03.setVisibility(View.INVISIBLE);
-				iv04.setVisibility(View.VISIBLE);
+				
+				tCounter = 0;
+				if(touchView.getScreenNumber() == 0){
+					mHandler.sendEmptyMessage(0);
+				}
+				
 				touchView.setNavData(400, 600, 150, 5);
+				
+				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
+				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
+				btnInfo03.setBackgroundResource(R.drawable.btn03_up);
+				btnInfo04.setBackgroundResource(R.drawable.btn04_down);
 			}
 		});
         
@@ -241,42 +286,13 @@ public class MainActivity extends Activity {
         frameLayout.addView(btnInfo03);
         frameLayout.addView(btnInfo04);
         
+        ivLogo = new ImageView(this);
+        ivLogo.setBackgroundResource(R.drawable.hoam20150403_logo);
+        ivLogo.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        ivLogo.setX(593);
+        ivLogo.setY(1033);
         
-        
-        
-        iv01 = new ImageView(this);
-        iv02 = new ImageView(this);
-        iv03 = new ImageView(this);
-        iv04 = new ImageView(this);
-        
-        iv01.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        iv02.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        iv03.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        iv04.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        
-        iv01.setBackgroundResource(R.drawable.img_mask_01);
-        iv02.setBackgroundResource(R.drawable.img_mask_02);
-        iv03.setBackgroundResource(R.drawable.img_mask_03);
-        iv04.setBackgroundResource(R.drawable.img_mask_04);
-        
-        iv01.setX(100);
-        iv01.setY(100);
-        iv02.setX(100);
-        iv02.setY(200);
-        iv03.setX(100);
-        iv03.setY(300);
-        iv04.setX(100);
-        iv04.setY(400);
-        
-        iv01.setVisibility(View.INVISIBLE);
-        iv02.setVisibility(View.INVISIBLE);
-        iv03.setVisibility(View.INVISIBLE);
-        iv04.setVisibility(View.INVISIBLE);
-        
-        frameLayout.addView(iv01);
-        frameLayout.addView(iv02);
-        frameLayout.addView(iv03);
-        frameLayout.addView(iv04);
+        frameLayout.addView(ivLogo);
         
         
         
@@ -290,6 +306,38 @@ public class MainActivity extends Activity {
         /*Disable Sleep Mode */
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        
+        mHandler = new Handler() {
+        	public void handleMessage(Message msg){
+        		tCounter++;
+        		
+
+
+        			
+        		if(tCounter <= screenSaverOnTime){
+
+            		mHandler.sendEmptyMessageDelayed(0, 1000);
+            		android.util.Log.i("count", " "+ tCounter + " sn: " + touchView.getScreenNumber());
+            	
+        		}else if(tCounter > screenSaverOnTime && tCounter < exitTime){
+        			
+        			
+        			touchView.resetToDefault();
+        			tCounter = 0;
+        			
+        			btnInfo01.setBackgroundResource(R.drawable.btn01_up);
+					btnInfo02.setBackgroundResource(R.drawable.btn02_up);
+					btnInfo03.setBackgroundResource(R.drawable.btn03_up);
+					btnInfo04.setBackgroundResource(R.drawable.btn04_up);
+        		}
+        		
+        		else{
+        			android.util.Log.i("count", "exit");
+        		}
+        		
+        		
+        	}
+        };
         
     }
     
@@ -479,5 +527,12 @@ public class MainActivity extends Activity {
 
       
 
+      @Override 
+      public void onDestroy(){
+    	  super.onDestroy();
+    	  mHandler.removeMessages(0);
+    	  mHandler = null;
+    	  
+      }
 
 }
