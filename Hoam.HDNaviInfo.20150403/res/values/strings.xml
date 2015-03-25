@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">그림B</string>
+    <string name="app_name">호암201504</string>
     <string name="orientation_prompt">Screen Orientation</string>
     <string name="imgDesc">Image Description</string>
     <string name="version">v0.0</string>

@@ -143,9 +143,14 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 				tCounter = 0;
+				
+				if(touchView.getScreenNumber() == 0){
+					mHandler.sendEmptyMessage(0);
+				}
+				
 				if(touchView.getScreenNumber() != 1){
 					touchView.setScreenNumber(1);
-					mHandler.sendEmptyMessage(0);
+					
 					
 					btnInfo01.setBackgroundResource(R.drawable.btn01_up);
 					btnInfo02.setBackgroundResource(R.drawable.btn02_up);
@@ -153,6 +158,8 @@ public class MainActivity extends Activity {
 					btnInfo04.setBackgroundResource(R.drawable.btn04_up);
 					
 				}
+				
+				
 				
 				
 				touchView.retriveTouchEvent(arg1);
@@ -184,7 +191,7 @@ public class MainActivity extends Activity {
 					mHandler.sendEmptyMessage(0);
 				}
 				
-				touchView.setNavData(400, 600, 70, 2);
+				touchView.setNavData(317.1238f, 564.34644f, 245.34477f, 2);
 				
 				btnInfo01.setBackgroundResource(R.drawable.btn01_down);
 				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
@@ -214,7 +221,7 @@ public class MainActivity extends Activity {
 					mHandler.sendEmptyMessage(0);
 				}
 				
-				touchView.setNavData(400, 600, 100, 3);
+				touchView.setNavData(138.36953f, 559.376f, 119.1057f, 3);
 				
 				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
 				btnInfo02.setBackgroundResource(R.drawable.btn02_down);
@@ -244,7 +251,7 @@ public class MainActivity extends Activity {
 					mHandler.sendEmptyMessage(0);
 				}
 			
-				touchView.setNavData(400, 600, 125, 4);
+				touchView.setNavData(174.5719f, 860.29193f, 139.95155f, 4);
 				
 				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
 				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
@@ -270,7 +277,7 @@ public class MainActivity extends Activity {
 					mHandler.sendEmptyMessage(0);
 				}
 				
-				touchView.setNavData(400, 600, 150, 5);
+				touchView.setNavData(46.59692f, 1155.3833f, 38.59692f, 5);
 				
 				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
 				btnInfo02.setBackgroundResource(R.drawable.btn02_up);

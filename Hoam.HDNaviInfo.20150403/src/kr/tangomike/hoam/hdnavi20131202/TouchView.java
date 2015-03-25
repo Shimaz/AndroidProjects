@@ -57,7 +57,7 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 	private Paint textPaint = new Paint();
 	private Paint dataPaint = new Paint();
 	private Paint touchAreaPaint = new Paint();
-
+	private Paint btnPaint = new Paint();
 	
 	
 	private ArrayList<TuioPoint> tuioPoints;
@@ -178,7 +178,14 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 		textPaint.setColor(Color.WHITE);
 		textPaint.setAlpha(255);
 		
+		dataPaint.setColor(Color.CYAN);
+		dataPaint.setTextSize(20);
 		
+		btnPaint.setColor(Color.rgb(141, 111, 74));
+		btnPaint.setStrokeWidth(5);
+		btnPaint.setStyle(Style.STROKE);
+		btnPaint.setAlpha(64);
+		btnPaint.setAntiAlias(true);
 		
 		navPaint.setColor(Color.rgb(0, 191, 174));
 		navPaint.setStrokeWidth(5);
@@ -186,7 +193,7 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 		navPaint.setAlpha(255);
 		navPaint.setAntiAlias(true);
 
-		
+		 
 		navShadowPaint.setColor(Color.DKGRAY);
 		navShadowPaint.setStrokeWidth(5);
 		navShadowPaint.setStyle(Style.STROKE);
@@ -373,8 +380,8 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 	           if (mode == 1  /*Drag*/) {
 	           
 					if(insideNav){
-						dataPaint.setColor(0xff40a7ff);
-						dataPaint.setTextSize(25);
+//						dataPaint.setColor(0xff40a7ff);
+//						dataPaint.setTextSize(25);
 						navX = xDif + event.getX();
 						
 						navY = yDif + event.getY();
@@ -384,8 +391,8 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 						
 					}else
 					{
-						dataPaint.setColor(0xffff3a7b);
-						dataPaint.setTextSize(25);
+//						dataPaint.setColor(0xffff3a7b);
+//						dataPaint.setTextSize(25);
 					}
 	        	   
 	        	   
@@ -403,13 +410,13 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 
 						
 						
-						dataPaint.setColor(0xff40a7ff);
-						dataPaint.setTextSize(25);
+//						dataPaint.setColor(0xff40a7ff);
+//						dataPaint.setTextSize(25);
 
 					}else
 					{
-						dataPaint.setColor(0xffff3a7b);
-						dataPaint.setTextSize(25);
+//						dataPaint.setColor(0xffff3a7b);
+//						dataPaint.setTextSize(25);
 					}
 					
 	           break;
@@ -529,6 +536,7 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 			
 
 			
+			
 			if ((!oscInterface.isReachable()) || (drawAdditionalInfo)) drawInfo(c);
 			getHolder().unlockCanvasAndPost(c);
 
@@ -544,6 +552,13 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 	}
 	
 
+	
+	private void drawData(Canvas c){
+		
+		c.drawText("scale: " + navScale, 8, 1180, dataPaint);
+		c.drawText("x: " + navX + " y: " + navY, 8, 1225, dataPaint);
+		
+	}
 	
 	private void drawInfo(Canvas c) {
 		
@@ -774,9 +789,10 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 					break;
 					
 			}
-			c.drawRect(navX - navScale + 4, navY - (navScale / 9*16) + 4, navX + navScale + 4, navY + (navScale / 9*16) + 4, navShadowPaint);			
-			c.drawRect(navX - navScale, navY - (navScale / 9*16), navX + navScale, navY + (navScale / 9*16), navPaint);
+//			c.drawRect(navX - navScale + 4, navY - (navScale / 9*16) + 4, navX + navScale + 4, navY + (navScale / 9*16) + 4, navShadowPaint);			
+			c.drawRect(navX - navScale, navY - (navScale / 9*16), navX + navScale, navY + (navScale / 9*16), btnPaint);
 
+//			drawData(c);
 
 			
 			if ((!oscInterface.isReachable()) || (drawAdditionalInfo)) drawInfo(c);
