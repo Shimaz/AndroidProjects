@@ -15,7 +15,7 @@ public class ListActivity extends Activity {
 	private ArrayList<ListData> allList;
 	private ListView lvList;
 	
-	private ListAdapter listAdapter;
+	
 	
 
 	
@@ -52,11 +52,9 @@ public class ListActivity extends Activity {
 //			}
 //		};
 		
-		
-		listAdapter = new ListAdapter(this, R.layout.list_row, allList);
-		
+		ListAdapterWithSection listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
+//		ListAdapter listAdapter = new ListAdapter(this, R.layout.list_row, allList); 
 		lvList.setAdapter(listAdapter);
-		
 		/*
 		 * menu button setup
 		 */

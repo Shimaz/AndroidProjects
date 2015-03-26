@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
@@ -92,6 +93,18 @@ public class ListAdapter extends ArrayAdapter<ListData> implements SectionIndexe
 				    
 				    context.startActivity(callIntent);
 					
+				}
+			});
+			
+			
+			LinearLayout ll = (LinearLayout)v.findViewById(R.id.list_row);
+			ll.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+				
+					android.util.Log.i("shimaz", "list click");
 				}
 			});
 			

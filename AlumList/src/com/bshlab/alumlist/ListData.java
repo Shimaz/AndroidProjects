@@ -1,5 +1,7 @@
 package com.bshlab.alumlist;
 
+
+
 public class ListData {
 	private int id;
 	private int notation;
@@ -7,18 +9,20 @@ public class ListData {
 	private String mobile;
 	private String email;
 	private String company;
+	private boolean isHeader;
 	
 	public ListData(){
 		
 	}
 	
-	public ListData(int id, int notation, String name, String mobile, String email, String company){
+	public ListData(int id, int notation, String name, String mobile, String email, String company, boolean header){
 		this.id = id;
 		this.notation = notation;
 		this.name = name;
 		this.mobile = mobile;
 		this.email = email;
 		this.company = company;
+		this.isHeader = header;
 	}
 	
 	public int getID(){
@@ -45,6 +49,10 @@ public class ListData {
 		return this.company;
 	}
 	
+	public boolean getIsHeader(){
+		return this.isHeader;
+	}
+	
 	public void setID(int id){
 		this.id = id;
 	}
@@ -69,5 +77,9 @@ public class ListData {
 	public void setCompany(String comp){
 		this.company = comp;
 		
+	}
+	
+	public void setIsHeader(boolean header){
+		this.isHeader = header;
 	}
 }
