@@ -25,12 +25,44 @@
         
     </RelativeLayout>
 
+    <LinearLayout
+		android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/rl_title_bar"
+        android:layout_above="@+id/ll_search"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        >
+        
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+         	android:layout_weight="2"
+         	android:inputType="text"
+         	android:layout_marginLeft="5dp"
+         	android:layout_marginRight="10dp"/>
+        
+        <Button
+	        android:id="@+id/btn_search"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:text="search"
+	        android:layout_weight="0"
+	        android:layout_marginRight="10dp"/>
+	        
+    
+        
+    </LinearLayout>
     
     
     
     <ListView 
         android:id="@+id/lv_list_all"
-        android:layout_below="@+id/rl_title_bar"
+        android:layout_below="@+id/ll_search"
         android:layout_above="@+id/ll_menu"
         android:layout_height="match_parent"
         android:layout_width="match_parent"

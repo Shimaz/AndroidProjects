@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 public class ListActivity extends Activity {
@@ -16,7 +17,7 @@ public class ListActivity extends Activity {
 	private ListView lvList;
 	
 	
-	
+	private ListAdapterWithSection listAdapter;
 
 	
 	@Override
@@ -46,14 +47,13 @@ public class ListActivity extends Activity {
 		
 
 		lvList = (ListView)findViewById(R.id.lv_list_all);
-//		final Runnable updateUI = new Runnable(){
-//			public void run(){
-//				ListActivity.this.listAdapter.notifyDataSetChanged();
-//			}
-//		};
+		final Runnable updateUI = new Runnable(){
+			public void run(){
+				ListActivity.this.listAdapter.notifyDataSetChanged();
+			}
+		};
 		
-		ListAdapterWithSection listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
-//		ListAdapter listAdapter = new ListAdapter(this, R.layout.list_row, allList); 
+		listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
 		lvList.setAdapter(listAdapter);
 		/*
 		 * menu button setup
@@ -69,6 +69,30 @@ public class ListActivity extends Activity {
 		btnSettings.setOnClickListener(menuListener);
 		
 
+		
+		Button btnSearch = (Button)findViewById(R.id.btn_search);
+		btnSearch.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				EditText et = (EditText)findViewById(R.id.et_search);
+				String keyword = et.getText().toString();
+				ArrayList<ListData> tmpList = new ArrayList<ListData>();
+			
+				
+				
+				dbAdapter.open();
+
+				tmpList = dbAdapter.getSearchList(keyword);
+				listAdapter = new ListAdapterWithSection(getApplicationContext(), R.layout.list_row, R.layout.list_section, tmpList);
+				dbAdapter.close();
+				lvList.setAdapter(listAdapter);
+				updateUI.run();
+				
+			}
+		});
 		
 		
 		

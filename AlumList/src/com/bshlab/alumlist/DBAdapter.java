@@ -2,7 +2,6 @@ package com.bshlab.alumlist;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -133,7 +132,7 @@ public class DBAdapter
      public ArrayList<ListData> getSearchList(String keyword){
     	 ArrayList<ListData> retList = new ArrayList<ListData>();
     	 
-    	 String query = "SELECT * FROM alumlist";
+    	 String query = "SELECT * FROM alumlist where name like " + "\"%" + keyword + "%\"" + " or company_name like " + "\"%" + keyword + "%\"" + " or company_address like " + "\"%" + keyword + "%\"" + " or home_address like " + "\"%" + keyword + "%\"";
     	 Cursor cur = mDb.rawQuery(query, null);
     	 int oldNote = 0;
     	 if(cur.moveToFirst()){
