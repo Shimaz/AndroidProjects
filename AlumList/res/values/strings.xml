@@ -10,4 +10,17 @@
     <string name="title_list">총 동문 목록</string>
     <string name="title_bookmark">즐겨찾기 목록</string>
     <string name="title_settings">설정 및 정보</string>
+    
+    
+    <string name="cert_title">동문 인증</string>
+    <string name="cert_notation">기수</string>
+    <string name="cert_name">성명</string>
+    <string name="cert_number">인증번호</string>
+    
+    <string name="cert_complete">인증이 완료되었습니다</string>
+	<string name="cert_done">인증됨</string>
+	<string name="cert_no_cert">미인증</string>
+	
+	<string name="ok">확인</string>
+	<string name="cancel">취소</string>
 </resources>
