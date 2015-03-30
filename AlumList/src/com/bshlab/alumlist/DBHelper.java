@@ -21,7 +21,9 @@ public class DBHelper extends SQLiteOpenHelper {
 	 //private static String DB_PATH = "context.getApplicationInfo().dataDir/databases/";
 
 	// Data Base Name.
-	 private static final String DATABASE_NAME = "ssu_health_db.sqlite";
+//	 private static final String DATABASE_NAME = "ssu_health_db.sqlite";
+	 private static final String DATABASE_NAME = "ssu_health_pw.sqlite";
+	 
 	 // Data Base Version.
 	 private static final int DATABASE_VERSION = 1;
 	 // Table Names of Data Base.
