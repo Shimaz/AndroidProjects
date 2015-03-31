@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="kr.tangomike.leeum2013.wheel.zoom.permanent"
+      android:versionName="1.0" android:versionCode="4">
+      
+     	<uses-sdk android:minSdkVersion="12" android:targetSdkVersion="17"></uses-sdk>
+	
+	<uses-permission android:name="android.permission.INTERNET" />
+    
+    
+    <application 
+        android:icon="@drawable/icon_72" 
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
+        android:allowBackup="true"
+        >
+        
+        <activity android:name="MainActivity"
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:icon="@drawable/icon_72"
+                  android:screenOrientation="portrait"
+                  android:hardwareAccelerated="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+   		<activity 
+   		    android:name="SettingsActivity"
+   		    android:screenOrientation="portrait">
+   		    
+   		</activity>
+		<activity 
+		    android:name="HelpActivity"
+		    android:screenOrientation="portrait"></activity>
+      
+    </application>
+ 	 
+
+</manifest>
