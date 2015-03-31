@@ -17,7 +17,7 @@
  along with TUIOdroid.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package kr.tangomike.hoam.hdnavi20131202;
+package kr.tangomike.leeum2013.wheel.zoom003;
 
 import android.annotation.SuppressLint;
 import android.app.*;
@@ -26,37 +26,44 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PowerManager;
 import android.view.*;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.*;
 import java.net.*;
+import java.util.ArrayList;
 
 
 
 import android.widget.FrameLayout;
-//import android.widget.ImageView;
+import android.widget.ImageView;
+import android.widget.SeekBar;
 
-/**
- * Main Activity
+
+/* Main Activity
  * @author Tobias Schwirten
  * @author Martin Kaltenbrunner
  */
-@SuppressLint({ "ClickableViewAccessibility", "HandlerLeak" })
+
+
+@SuppressLint({ "HandlerLeak", "DefaultLocale" })
 public class MainActivity extends Activity {
   
 	/**
 	 * View that shows the Touch points etc
 	 */
-	private TouchView touchView;
+	public TouchView touchView;
 	
 	/**
 	 * Request Code for the Settings activity to define 
 	 * which child activity calls back
 	 */
 	private static final int REQUEST_CODE_SETTINGS = 0;
+
+//	protected static final ProgressBar m_seekBar = null;
 	
 	/**
 	 * IP Address for OSC connection
@@ -87,40 +94,56 @@ public class MainActivity extends Activity {
 	 * Detects shaking gesture
 	 */	
 	private SensorManager sensorManager;
-	
-	private boolean showSettings = false;
+
 	 
+	private boolean showSettings = false;
+	
+
 	/**
-	 *  Called when the activity is first created. 
-	 */
-	
-	
-	
+	 * Timer 
+	 * TODO
+	 */ 
+	private Handler mHandler;
 	public long tCounter = 0;
 	public long screenSaverOnTime = 60;
 	private final int exitTime = 180;
-	Handler mHandler;
+	public boolean isTimerStopped = true;
 	
 	
-	private ImageView ivLogo;
-	private ImageView ivGuide;
+	/**
+	 * 
+	 * seek bar as scroll wheel
+	 * 
+	 * 
+	 */
+
+	private ArrayList<Bitmap> arrWheelUp;
+	private ArrayList<Bitmap> arrWheelDown;
+	private SeekBar sBar;
+	private static final int seekBarLength = 71; 
+	private int oldProgress = 0;
+	private ImageView ivWheel;
+	private int progressCounter = 0;
+	private int rotateNumber = 0;
+	private static final int SPEED = 1;
+	private boolean isDirty = false;
 	
 	
-	private Button btnInfo01;
-	private Button btnInfo02;
-	private Button btnInfo03;
-	private Button btnInfo04;
+	/**
+	 *  Called when the activity is first created. 
+	 */
+	public PowerManager.WakeLock wl;
 	
-    @Override
+    @SuppressLint("DefaultLocale")
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
         
         /* load preferences */
         SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
       
         /* get Values */
-        oscIP = settings.getString("myIP", "192.168.0.58");
+        oscIP = settings.getString("myIP", "192.168.0.53");
         oscPort = settings.getInt("myPort", 3333);
         drawAdditionalInfo = settings.getBoolean("ExtraInfo", false);
         sendPeriodicUpdates = settings.getBoolean("VerboseTUIO", true);
@@ -130,189 +153,120 @@ public class MainActivity extends Activity {
         touchView  = new TouchView(this,oscIP,oscPort,drawAdditionalInfo,sendPeriodicUpdates);
         
         
-        
         FrameLayout frameLayout = new FrameLayout(this);
         FrameLayout.LayoutParams frameLP = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT);
         frameLayout.setLayoutParams(frameLP);
+
+        
+        
         frameLayout.addView(touchView);
         
-        frameLayout.setOnTouchListener(new View.OnTouchListener() {
-		
+        
+        /**
+         * 
+         * wheel components
+         * 
+         */
+        
+        arrWheelUp = new ArrayList<Bitmap>();
+        arrWheelDown = new ArrayList<Bitmap>();
+        String pkg = getApplicationContext().getPackageName();
+        
+        for(int i = 0; i < 5; i++){
         	
-			@Override
-			public boolean onTouch(View arg0, MotionEvent arg1) {
+        	String str = String.format("%02d", i+1);
+			int irUp = getResources().getIdentifier("wheel_" + str + "_up", "raw", pkg);
+			int irDown = getResources().getIdentifier("wheel_" + str + "_down", "raw", pkg);
+			Bitmap tmpUp;
+			Bitmap tmpDown;
+			tmpUp = BitmapFactory.decodeResource(getResources(), irUp);
+			tmpDown = BitmapFactory.decodeResource(getResources(), irDown);
+			
+			arrWheelUp.add(tmpUp);
+			arrWheelDown.add(tmpDown);
+        	
+        	
+        }
+        
+        ivWheel = new ImageView(this);
+        ivWheel.setImageBitmap(arrWheelUp.get(0));
+        ivWheel.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        ivWheel.setX(370);
+        ivWheel.setY(631);
+        
+        frameLayout.addView(ivWheel);
+        
+        sBar = new SeekBar(this);
+        sBar.setLayoutParams(new LayoutParams(538, 130));
+        sBar.setX(370);
+        sBar.setY(601);
+        sBar.setMax(seekBarLength);
+        sBar.setProgress(0);
+        sBar.setAlpha(0);
+        sBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+			
+			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				
+				int tmp = seekBar.getProgress();
+				ivWheel.setImageBitmap(arrWheelUp.get(tmp%5));
 				tCounter = 0;
+				touchView.isSeekBarTouched = 0;
 				
-				if(touchView.getScreenNumber() == 0){
-					mHandler.sendEmptyMessage(0);
-				}
+				isDirty = false;
+			}
+			
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				int tmp = seekBar.getProgress();
+				ivWheel.setImageBitmap(arrWheelDown.get(tmp%5));
+				isTimerStopped = false;
+				tCounter = 0;
+				touchView.isSeekBarTouched = 1;
+				if(touchView.screenSaver == 0){
+		    		touchView.screenSaver = 1;
+					mHandler.sendEmptyMessageDelayed(0, 1000);
+		    	}
+			}
+			
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				ivWheel.setImageBitmap(arrWheelDown.get(progress%5));
 				
-				if(touchView.getScreenNumber() != 1){
-					touchView.setScreenNumber(1);
+				if(progress - oldProgress < 0){
+					progressCounter++;
+					if(progressCounter % SPEED == 0){
+						rotateNumber = (progressCounter / SPEED) % (seekBarLength +1);
+					}
+//					android.util.Log.i("progress", "left " + progressCounter + " " + Math.abs(rotateNumber));
 					
 					
-					btnInfo01.setBackgroundResource(R.drawable.btn01_up);
-					btnInfo02.setBackgroundResource(R.drawable.btn02_up);
-					btnInfo03.setBackgroundResource(R.drawable.btn03_up);
-					btnInfo04.setBackgroundResource(R.drawable.btn04_up);
+				}else{
+					progressCounter--;
+					if(progressCounter < 0) progressCounter = seekBarLength * SPEED;
+					if(progressCounter % SPEED == 0){
+						rotateNumber = (progressCounter / SPEED) % (seekBarLength +1);
+					}
+//					android.util.Log.i("progress", "right " + progressCounter + " " + Math.abs(rotateNumber));
+				}
+				
+				if(isDirty){
+					touchView.imageNumber = Math.abs(rotateNumber)+1;
+					touchView.setBGImg();
 					
 				}
+				isDirty = true;
 				
+				android.util.Log.i("progress" , ""+progress);
 				
-				
-				
-				touchView.retriveTouchEvent(arg1);
-
-				return true;
-				
+				oldProgress = seekBar.getProgress();
 			}
 		});
         
         
         
         
-        
-        btnInfo01 = new Button(this);
-        btnInfo01.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo01.setBackgroundResource(R.drawable.btn01_up);
-        btnInfo01.setX(593);
-        btnInfo01.setY(278);
-        btnInfo01.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				
-				
-				
-				tCounter = 0;
-				if(touchView.getScreenNumber() == 0){
-					mHandler.sendEmptyMessage(0);
-				}
-				
-				touchView.setNavData(317.1238f, 564.34644f, 245.34477f, 2);
-				
-				btnInfo01.setBackgroundResource(R.drawable.btn01_down);
-				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
-				btnInfo03.setBackgroundResource(R.drawable.btn03_up);
-				btnInfo04.setBackgroundResource(R.drawable.btn04_up);
-				
-			}
-		});
-        
-        
-        
-        btnInfo02 = new Button(this);
-        btnInfo02.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo02.setBackgroundResource(R.drawable.btn02_up);
-        btnInfo02.setX(593);
-        btnInfo02.setY(432);
-        btnInfo02.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-		
-				
-				
-				tCounter = 0;
-				if(touchView.getScreenNumber() == 0){
-					mHandler.sendEmptyMessage(0);
-				}
-				
-				touchView.setNavData(138.36953f, 559.376f, 119.1057f, 3);
-				
-				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
-				btnInfo02.setBackgroundResource(R.drawable.btn02_down);
-				btnInfo03.setBackgroundResource(R.drawable.btn03_up);
-				btnInfo04.setBackgroundResource(R.drawable.btn04_up);
-				
-				
-			}
-		});
-        
-        btnInfo03 = new Button(this);
-        btnInfo03.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo03.setBackgroundResource(R.drawable.btn03_up);
-        btnInfo03.setX(593);
-        btnInfo03.setY(355);
-        btnInfo03.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-	
-				
-				
-				
-				tCounter = 0;
-				if(touchView.getScreenNumber() == 0){
-					mHandler.sendEmptyMessage(0);
-				}
-			
-				touchView.setNavData(174.5719f, 860.29193f, 139.95155f, 4);
-				
-				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
-				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
-				btnInfo03.setBackgroundResource(R.drawable.btn03_down);
-				btnInfo04.setBackgroundResource(R.drawable.btn04_up);
-			}
-		});
-        
-        btnInfo04 = new Button(this);
-        btnInfo04.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnInfo04.setBackgroundResource(R.drawable.btn04_up);
-        btnInfo04.setX(593);
-        btnInfo04.setY(509);
-        btnInfo04.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				
-				tCounter = 0;
-				if(touchView.getScreenNumber() == 0){
-					mHandler.sendEmptyMessage(0);
-				}
-				
-				touchView.setNavData(46.59692f, 1155.3833f, 38.59692f, 5);
-				
-				btnInfo01.setBackgroundResource(R.drawable.btn01_up);
-				btnInfo02.setBackgroundResource(R.drawable.btn02_up);
-				btnInfo03.setBackgroundResource(R.drawable.btn03_up);
-				btnInfo04.setBackgroundResource(R.drawable.btn04_down);
-			}
-		});
-        
-        
-        
-        frameLayout.addView(btnInfo01);
-        frameLayout.addView(btnInfo02);
-        frameLayout.addView(btnInfo03);
-        frameLayout.addView(btnInfo04);
-        
-        ivLogo = new ImageView(this);
-        ivLogo.setBackgroundResource(R.drawable.hoam20150403_logo);
-        ivLogo.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        ivLogo.setX(593);
-        ivLogo.setY(16);
-        
-        frameLayout.addView(ivLogo);
-        
-        
-        ivGuide = new ImageView(this);
-        ivGuide.setBackgroundResource(R.drawable.img_gui_guide);
-        ivGuide.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        ivGuide.setX(593);
-        ivGuide.setY(829);
-        
-        frameLayout.addView(ivGuide);
-        
-        
-        
+        frameLayout.addView(sBar);
         setContentView(frameLayout);
         
         
@@ -321,9 +275,11 @@ public class MainActivity extends Activity {
 
         /*Disable Sleep Mode */
         super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        //super.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
-        mHandler = new Handler() {
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+	    wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
+	    
+	    isTimerStopped = true;
+		mHandler = new Handler() {
         	public void handleMessage(Message msg){
         		tCounter++;
         		
@@ -331,20 +287,21 @@ public class MainActivity extends Activity {
 
         			
         		if(tCounter <= screenSaverOnTime){
-
+        			
             		mHandler.sendEmptyMessageDelayed(0, 1000);
-            		android.util.Log.i("count", " "+ tCounter + " sn: " + touchView.getScreenNumber());
+            		android.util.Log.i("counter", " "+ tCounter);
+            		
             	
         		}else if(tCounter > screenSaverOnTime && tCounter < exitTime){
         			
-        			
-        			touchView.resetToDefault();
+        			isTimerStopped = true;
         			tCounter = 0;
-        			
-        			btnInfo01.setBackgroundResource(R.drawable.btn01_up);
-					btnInfo02.setBackgroundResource(R.drawable.btn02_up);
-					btnInfo03.setBackgroundResource(R.drawable.btn03_up);
-					btnInfo04.setBackgroundResource(R.drawable.btn04_up);
+        			progressCounter = 0;
+        			oldProgress = 0;
+        			touchView.imageNumber = 1;
+        			touchView.resetToDefault();
+            		
+            		
         		}
         		
         		else{
@@ -354,8 +311,34 @@ public class MainActivity extends Activity {
         		
         	}
         };
-        
+	    
     }
+    
+    
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+    	isTimerStopped = false;
+    	
+    	if(touchView.screenSaver == 0){
+    		
+    		mHandler.sendEmptyMessageDelayed(0, 1000);
+    	}
+    	tCounter = 0;
+    	touchView.screenSaver = 1;
+    	
+    	
+    	
+    	touchView.retreiveTouchEvent(event);
+    	
+    	
+    	return super.onTouchEvent(event);
+    }
+    
+    
+    
+ 
+    
+    
     
 
 	/**
@@ -391,16 +374,14 @@ public class MainActivity extends Activity {
         }
     }
     
-    
 
-
-    
+	
 	/**
 	 * Opens the Activity that provides the Settings
 	 */
     private void openSettingsActivity (){
     	Intent myIntent = new Intent();
-    	myIntent.setClassName("kr.tangomike.hoam.hdnavi20131202", "kr.tangomike.hoam.hdnavi20131202.SettingsActivity"); 
+    	myIntent.setClassName("kr.tangomike.leeum2013.wheel.zoom003", "kr.tangomike.leeum2013.wheel.zoom003.SettingsActivity"); 
     	myIntent.putExtra("IP_in", oscIP);
     	myIntent.putExtra("Port_in", oscPort);
     	myIntent.putExtra("ExtraInfo", this.drawAdditionalInfo);
@@ -416,7 +397,7 @@ public class MainActivity extends Activity {
 	 */
     private void openHelpActivity (){
     	Intent myIntent = new Intent();
-     	myIntent.setClassName("kr.tangomike.hoam.hdnavi20131202", "kr.tangomike.hoam.hdnavi20131202.HelpActivity");
+     	myIntent.setClassName("kr.tangomike.leeum2013.wheel.zoom003", "kr.tangomike.leeum2013.wheel.zoom003.HelpActivity");
      	showSettings = true;
      	startActivity(myIntent);  
     }
@@ -493,16 +474,16 @@ public class MainActivity extends Activity {
     	
     	switch(screenOrientation){
     	
-    		case 0: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    		case 0: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     		break;
     			
-    		case 1: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    		case 1: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     		break;
 				
-    		case 2: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    		case 2: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     		break;
 	
-    		default: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    		default: this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     		break;
     	}	
     }
@@ -532,6 +513,7 @@ public class MainActivity extends Activity {
           float shake = x*x + y*y + z*z;
            
           if ((!showSettings) && (shake>500)) {
+        	  //android.util.Log.v("Accelerometer",""+shake);
         	  showSettings = true;
         	  openSettingsActivity();
           }
@@ -542,12 +524,14 @@ public class MainActivity extends Activity {
       };
 
       
-
-      @Override 
+      @Override
       public void onDestroy(){
-    	  super.onDestroy();
+    	  
     	  mHandler.removeMessages(0);
-    	  mHandler = null;
+    	  tCounter = exitTime;
+    	  
+    	  super.onDestroy();
+    	  
     	  
       }
 
