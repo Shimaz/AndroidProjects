@@ -224,7 +224,7 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 		}
 		
 		backgroundImage = bgArr.get(0);
-		bgImg = BitmapFactory.decodeResource(getResources(), R.drawable.rot_bg);
+		bgImg = BitmapFactory.decodeResource(getResources(), R.drawable.rot_bg_1232);
         
 		
 		arrowUp = BitmapFactory.decodeResource(getResources(), R.drawable.ui_nav_arrow_up);
