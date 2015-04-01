@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
         SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
       
         /* get Values */
-        oscIP = settings.getString("myIP", "192.168.0.8");
+        oscIP = settings.getString("myIP", "192.168.0.5");
         oscPort = settings.getInt("myPort", 3333);
         drawAdditionalInfo = settings.getBoolean("ExtraInfo", false);
         sendPeriodicUpdates = settings.getBoolean("VerboseTUIO", true);
@@ -280,23 +280,23 @@ public class MainActivity extends Activity {
         frameLayout.addView(sBar);
         
         
-        Button btnBack = new Button(this);
-        btnBack.setText(" settings ");
-        btnBack.setX(10);
-        btnBack.setY(10);
-        btnBack.setTextSize(20.0f);
-        btnBack.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnBack.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				touchView.screenSaver = 0;
-				openSettingsActivity();
-				
-			}
-		});
-        
-        frameLayout.addView(btnBack);
+//        Button btnBack = new Button(this);
+//        btnBack.setText(" settings ");
+//        btnBack.setX(10);
+//        btnBack.setY(10);
+//        btnBack.setTextSize(20.0f);
+//        btnBack.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//			
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				touchView.screenSaver = 0;
+//				openSettingsActivity();
+//				
+//			}
+//		});
+//        
+//        frameLayout.addView(btnBack);
         
         setContentView(frameLayout);
 

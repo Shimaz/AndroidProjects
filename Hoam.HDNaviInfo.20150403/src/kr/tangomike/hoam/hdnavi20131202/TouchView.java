@@ -32,12 +32,12 @@ import tuioDroid.osc.OSCInterface;
 import com.illposed.osc.OSCBundle;
 import com.illposed.osc.OSCMessage;
 
-import android.annotation.SuppressLint;
+//import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.Paint.*;
-import android.os.Handler;
-import android.os.Message;
+//import android.os.Handler;
+//import android.os.Message;
 import android.view.*;
 
 /**
@@ -49,7 +49,7 @@ import android.view.*;
 
 
 
-@SuppressLint({ "HandlerLeak", "ViewConstructor" })
+//@SuppressLint({ "HandlerLeak", "ViewConstructor" })
 public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	private static final int MAX_TOUCHPOINTS = 2;
@@ -554,12 +554,12 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 	
 
 	
-	private void drawData(Canvas c){
-		
-		c.drawText("scale: " + navScale, 8, 1180, dataPaint);
-		c.drawText("x: " + navX + " y: " + navY, 8, 1225, dataPaint);
-		
-	}
+//	private void drawData(Canvas c){
+//		
+//		c.drawText("scale: " + navScale, 8, 1180, dataPaint);
+//		c.drawText("x: " + navX + " y: " + navY, 8, 1225, dataPaint);
+//		
+//	}
 	
 	private void drawInfo(Canvas c) {
 		

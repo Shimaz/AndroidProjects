@@ -19,7 +19,7 @@
 
 package kr.tangomike.hoam.hdnavi20131202;
 
-import android.annotation.SuppressLint;
+//import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.content.pm.ActivityInfo;
@@ -44,7 +44,7 @@ import android.widget.FrameLayout;
  * @author Tobias Schwirten
  * @author Martin Kaltenbrunner
  */
-@SuppressLint({ "ClickableViewAccessibility", "HandlerLeak" })
+//@SuppressLint({ "ClickableViewAccessibility", "HandlerLeak" })
 public class MainActivity extends Activity {
   
 	/**

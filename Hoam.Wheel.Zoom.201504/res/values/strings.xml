@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">휠-향완</string>
+    <string name="app_name">투구</string>
     <string name="orientation_prompt">Screen Orientation</string>
     <string name="imgDesc">Image Description</string>
     <string name="version">v0.0</string>
