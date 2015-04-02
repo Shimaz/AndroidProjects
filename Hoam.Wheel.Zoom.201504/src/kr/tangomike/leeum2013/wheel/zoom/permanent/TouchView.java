@@ -142,7 +142,7 @@ public class TouchView extends SurfaceView implements SurfaceHolder.Callback {
 	
 	
 	private static final int bgLeft = 223;
-	private static final int bgTop = 216;
+	private static final int bgTop = 251;
 	private static final int bgRight = 577;
 	private static final int bgBottom = 899;
 	
