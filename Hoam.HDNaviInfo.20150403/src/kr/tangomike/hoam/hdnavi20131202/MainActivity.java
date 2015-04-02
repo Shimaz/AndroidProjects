@@ -104,6 +104,7 @@ public class MainActivity extends Activity {
 	
 	private ImageView ivLogo;
 	private ImageView ivGuide;
+	private ImageView ivHoam;
 	
 	
 	private Button btnInfo01;
@@ -311,6 +312,14 @@ public class MainActivity extends Activity {
         
         frameLayout.addView(ivGuide);
         
+        
+        ivHoam = new ImageView(this);
+        ivHoam.setBackgroundResource(R.drawable.img_logo_hoam);
+        ivHoam.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        ivHoam.setX(631);
+        ivHoam.setY(1162);
+        
+        frameLayout.addView(ivHoam);
         
         
         setContentView(frameLayout);
