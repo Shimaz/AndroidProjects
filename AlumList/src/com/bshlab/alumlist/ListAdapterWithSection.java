@@ -118,6 +118,12 @@ public class ListAdapterWithSection extends ArrayAdapter<ListData> implements Se
 						// TODO Auto-generated method stub
 					
 						android.util.Log.i("shimaz", "list click");
+						
+						Intent intent = new Intent(context, DetailActivity.class);
+						intent.putExtra("id", data.getID());
+						context.startActivity(intent);
+						
+						
 					}
 				});
 				
