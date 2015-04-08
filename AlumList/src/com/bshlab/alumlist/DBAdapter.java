@@ -85,6 +85,7 @@ public class DBAdapter
     	 
     	 String query = "SELECT * FROM alumlist where ID=" + nID;
     	 Cursor cur = mDb.rawQuery(query, null);
+    	 cur.moveToFirst();
     	 list.setID(cur.getInt(0));
     	 list.setNotation(cur.getInt(1));
     	 list.setName(cur.getString(2));
