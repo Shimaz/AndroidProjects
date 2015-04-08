@@ -1,5 +1,6 @@
 package com.bshlab.alumlist;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class DetailActivity extends Activity {
+	
+	private ListData data;
+	
 	@Override
 	public void onCreate(Bundle sis){
 		super.onCreate(sis);
@@ -17,6 +21,20 @@ public class DetailActivity extends Activity {
 		Intent intent = this.getIntent();
 		
 		int id = intent.getExtras().getInt("id");
+		
+		
+		DBAdapter dbAdapter = new DBAdapter(this);
+		
+		dbAdapter.createDatabase();
+		dbAdapter.open();
+		
+		data = new ListData();
+		data = dbAdapter.getDetailInfo(id);
+		
+		dbAdapter.close();
+		
+		
+		
 		
 		TextView tv = (TextView)findViewById(R.id.tv_test);
 		tv.setText("" + id);

@@ -1,5 +1,7 @@
 package com.bshlab.alumlist;
 
+import android.graphics.Bitmap;
+
 
 
 public class ListData {
@@ -9,6 +11,13 @@ public class ListData {
 	private String mobile;
 	private String email;
 	private String company;
+	
+	private String companyAddress;
+	private String companyNo;
+	private String homeAddress;
+	private String homeNo;
+	private byte[] photo;
+	
 	private boolean isHeader;
 	
 	public ListData(){
@@ -49,6 +58,26 @@ public class ListData {
 		return this.company;
 	}
 	
+	public String getCompanyAddress(){
+		return this.companyAddress;
+	}
+	
+	public String getCompanyNo(){
+		return this.companyNo;
+	}
+	
+	public String getHomeAddress(){
+		return this.homeAddress;
+	}
+	
+	public String getHomeNumber(){
+		return this.homeNo;
+	}
+	
+	public byte[] getPhoto(){
+		return this.photo;
+	}
+	
 	public boolean getIsHeader(){
 		return this.isHeader;
 	}
@@ -77,6 +106,26 @@ public class ListData {
 	public void setCompany(String comp){
 		this.company = comp;
 		
+	}
+	
+	public void setCompanyAddress(String add){
+		this.companyAddress = add;
+	}
+	
+	public void setCompanyNo(String no){
+		this.companyNo = no;
+	}
+	
+	public void setHomeAddress(String add){
+		this.homeAddress = add;
+	}
+	
+	public void setHomeNumber(String no){
+		this.homeNo = no;
+	}
+	
+	public void setPhoto(byte[] pho){
+		this.photo = pho;
 	}
 	
 	public void setIsHeader(boolean header){
