@@ -10,6 +10,7 @@
     <string name="title_list">총 동문 목록</string>
     <string name="title_bookmark">즐겨찾기 목록</string>
     <string name="title_settings">설정 및 정보</string>
+    <string name="title_detail">동문 상세 정보</string>
     
     
     <string name="cert_title">동문 인증</string>

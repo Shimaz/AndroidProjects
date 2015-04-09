@@ -2,22 +2,83 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:background="#90ffffff">
+	android:background="#90000000">
     
-    <TextView 
-        android:id="@+id/tv_test"
+        
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:layout_marginBottom="30dp"
+        />
+    
+    
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:background="#59B0D6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        
+        <TextView
+            android:id="@+id/tv_title"
+            android:text="@string/title_detail"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:layout_height="45dp"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            ></TextView>
+        
+        <Button
+	        android:id="@+id/btn_close"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:text="@string/close"
+	        ></Button>
+        
+    </RelativeLayout>
+    
+    <ImageView
+        android:id="@+id/iv_detail_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:layout_below="@+id/rl_title"
+       	android:layout_marginTop="20dp"
+       	android:layout_marginLeft="20dp"
+       	android:contentDescription="@string/desc"
+       	/>
+  
+    
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+rl/rl_title"
+        >
+        
+    </RelativeLayout>
+    
+    <TextView
+        android:id="@+id/tv_notation"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_centerInParent="true"
-        ></TextView>
+        android:layout_below=
     
-    <Button
-        android:id="@+id/btn_close"
+    <TextView
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/close"
-        ></Button>
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/iv_detail_photo"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/rl_title"
+		/>        
+
 
 </RelativeLayout>
