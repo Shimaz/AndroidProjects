@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,8 +51,127 @@ public class DetailActivity extends Activity {
 		ivPhoto.setImageBitmap(getPhoto());
 		
 		
+		// 이름, 기수
 		TextView tvName = (TextView)findViewById(R.id.tv_name);
 		tvName.setText(data.getName());
+		
+		TextView tvNotation = (TextView)findViewById(R.id.tv_notation);
+		tvNotation.setText(data.getNotation()+"기");
+		
+		
+		// 핸드폰, 클릭시 통화
+		TextView tvCP = (TextView)findViewById(R.id.tv_cp_number);
+		tvCP.setText(data.getMobile());
+		tvCP.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				if(!(data.getMobile()=="" || data.getMobile()==" ")){
+				
+					Intent callIntent = new Intent(Intent.ACTION_DIAL);
+				    callIntent.setData(Uri.parse("tel:" + data.getMobile()));
+				    startActivity(callIntent);
+				}
+			    
+			    
+			    
+				
+			}
+		});
+		
+		
+		// 회사정보
+		TextView tvOccu = (TextView)findViewById(R.id.tv_occupation);
+		tvOccu.setText(data.getCompany());
+		
+
+		// Email
+		TextView tvEmail = (TextView)findViewById(R.id.tv_email);
+		tvEmail.setTag(data.getEmail());
+		tvEmail.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				
+				Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+
+				/* Fill it with Data */
+				emailIntent.setType("text/plain");
+				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{data.getEmail()});
+				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "제목");
+				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "내용");
+
+				/* Send it off to the Activity-Chooser */
+				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+				
+			}
+		});
+		
+		// 회사 주소, 회사 전화번호
+		TextView tvCompanyAddress = (TextView)findViewById(R.id.tv_company_address);
+		tvCompanyAddress.setText(data.getCompanyAddress());
+		
+		TextView tvCompanyPhone = (TextView)findViewById(R.id.tv_company_number);
+		tvCompanyPhone.setTag(data.getCompanyNo());
+		tvCompanyPhone.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				
+				if(!(data.getCompanyNo() == "" || data.getCompanyNo() == " ")){
+					
+					Intent callIntent = new Intent(Intent.ACTION_DIAL);
+				    callIntent.setData(Uri.parse("tel:" + data.getCompanyNo()));
+				    startActivity(callIntent);
+				}
+			    
+			    
+				
+			}
+		});		
+		
+		
+		// 집 주소, 집 전화번호 
+		
+		TextView tvHomeAddress = (TextView)findViewById(R.id.tv_home_address);
+		tvHomeAddress.setText(data.getHomeAddress());
+		
+		TextView tvHomeNumber = (TextView)findViewById(R.id.tv_home_numberl);
+		tvHomeNumber.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(!(data.getHomeNumber() == "" || data.getHomeNumber() == " ")){
+					
+					Intent callIntent = new Intent(Intent.ACTION_DIAL);
+				    callIntent.setData(Uri.parse("tel:" + data.getHomeNumber()));
+				    startActivity(callIntent);
+				
+				}
+				
+			}
+		});
+		
+		Button btnBookmark = (Button)findViewById(R.id.btn_bookmark);
+		btnBookmark.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				
+				setBookmark();
+				
+			}
+		});
+		
 		
 		
 		Button btnClose = (Button)findViewById(R.id.btn_close);
@@ -84,6 +204,11 @@ public class DetailActivity extends Activity {
 		return bmp;
 	}
 	
+	
+	
+	private void setBookmark(){
+		
+	}
 	
 	@Override
 	public void onBackPressed(){

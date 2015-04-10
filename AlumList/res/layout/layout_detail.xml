@@ -42,43 +42,170 @@
         
     </RelativeLayout>
     
-    <ImageView
-        android:id="@+id/iv_detail_photo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       	android:layout_below="@+id/rl_title"
-       	android:layout_marginTop="20dp"
-       	android:layout_marginLeft="20dp"
-       	android:contentDescription="@string/desc"
-       	/>
-  
-    
     
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/rl_info01"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+rl/rl_title"
+        android:layout_below="@+id/rl_title"
+        android:layout_marginTop="20dp"
         >
+        <ImageView
+	        android:id="@+id/iv_detail_photo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	       	android:layout_marginLeft="20dp"
+	       	android:contentDescription="@string/desc"
+	       	/>
         
+        
+         <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+	        android:layout_toRightOf="@+id/iv_detail_photo"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="10dp"
+            >
+            <TextView
+                android:id="@+id/tv_notation"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#000"
+                />
+            <TextView
+		        android:id="@+id/tv_name"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#000"
+		        android:textSize="20sp"
+				/>    
+				
+            
+           
+            <TextView
+                android:id="@+id/tv_cp_number"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+            	android:layout_width="wrap_content"
+            	android:textSize="20sp"
+            	android:textColor="#000"
+            	android:drawableLeft="@drawable/img_cp_icon"
+            	android:drawablePadding="10dp"
+            	android:clickable="true"
+            	/>
+            
+            
+        </LinearLayout>
+        
+         
+		<Button
+		    android:id="@+id/btn_bookmark"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:layout_alignParentRight="true"
+        	android:layout_marginRight="20dp"
+        	android:background="@drawable/btn_bookmark_off"
+        	/>
+		
     </RelativeLayout>
     
-    <TextView
-        android:id="@+id/tv_notation"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_below=
     
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="20sp"
-        android:layout_toRightOf="@+id/iv_detail_photo"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_info01"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_below="@+id/rl_title"
-		/>        
+        >
+		
+        <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+        
+        <TextView
+            android:id="@+id/tv_occupation"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:maxLines="2"
+            android:textColor="#000"
+            android:textSize="20sp"
+			/>
+        
+        
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/img_email_icon"
+            android:clickable="true"
+            android:drawablePadding="10dp"
+           	/>
+        
+        
+        <TextView
+            android:id="@+id/tv_company_address"
+            android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/img_fax_icon"
+            android:drawablePadding="10dp"
+            android:layout_gravity="top"
+           	/>
+        
+        
+        <TextView
+            android:id="@+id/tv_company_number"
+            android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/img_phone_icon"
+            android:clickable="true"
+            android:drawablePadding="10dp"
+           	/>
+            
+        <TextView
+            android:id="@+id/tv_home_address"
+            android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/img_home_icon"
+            android:drawablePadding="10dp"
+           	/>
+        
+        <TextView
+            android:id="@+id/tv_home_numberl"
+            android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/img_phone_icon"
+            android:clickable="true"
+            android:drawablePadding="10dp"
+           	/>
+            
+        
+    </LinearLayout>
+    
+        
+        
+    </ScrollView>
+        
+    
 
 
 </RelativeLayout>

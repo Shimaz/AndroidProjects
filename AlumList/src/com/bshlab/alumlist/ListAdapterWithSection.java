@@ -78,7 +78,7 @@ public class ListAdapterWithSection extends ArrayAdapter<ListData> implements Se
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 						 /* Create the Intent */
-						final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+						Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 
 						/* Fill it with Data */
 						emailIntent.setType("text/plain");
@@ -117,7 +117,6 @@ public class ListAdapterWithSection extends ArrayAdapter<ListData> implements Se
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
 					
-						android.util.Log.i("shimaz", "list click");
 						
 						Intent intent = new Intent(context, DetailActivity.class);
 						intent.putExtra("id", data.getID());
