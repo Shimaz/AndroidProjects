@@ -1,8 +1,12 @@
 package com.bshlab.alumlist;
 
 
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,15 +20,29 @@ public class DetailActivity extends Activity {
 	
 	private ListData data;
 	
-	
+	private ABClass abc;
+
+	private ArrayList<String>BMList;
+
+	private boolean isBookmarked;
 	
 	@Override
 	public void onCreate(Bundle sis){
 		super.onCreate(sis);
 		setContentView(R.layout.layout_detail);
-		
+		abc = (ABClass)getApplicationContext();
 
+		/*
+		 * 
+		 * 북마크 데이터 준비 
+		 * 
+		 */
 		
+		
+		BMList = new ArrayList<String>();
+		BMList = abc.getBookMarkData();
+		
+		isBookmarked = false;
 		/*
 		 * 
 		 * 데이터 준비 
@@ -173,6 +191,10 @@ public class DetailActivity extends Activity {
 		});
 		
 		
+		if(BMList.contains(""+data.getID())){
+			btnBookmark.setBackgroundResource(R.drawable.btn_bookmark_on);
+		}
+		
 		
 		Button btnClose = (Button)findViewById(R.id.btn_close);
 		btnClose.setOnClickListener(new View.OnClickListener() {
@@ -208,6 +230,17 @@ public class DetailActivity extends Activity {
 	
 	private void setBookmark(){
 		
+		
+		
+	}
+	
+	
+	private boolean checkBookmark(){
+		boolean retVal = false;
+		
+	
+		
+		return retVal;
 	}
 	
 	@Override

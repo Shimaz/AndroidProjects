@@ -1,5 +1,6 @@
 package com.bshlab.alumlist;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +11,12 @@ import android.widget.Button;
 public class BookmarkActivity extends Activity {
 	
 	
+	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
 		setContentView(R.layout.layout_bookmark);
+		
 		
 		/*
 		 * menu button setup

@@ -154,6 +154,56 @@ public class DBAdapter
     	 return retList;
      }
      
+     
+     public ArrayList<ListData> getBookmarkList(){
+    	 ArrayList<ListData> retList = new ArrayList<ListData>();
+    	 
+    	 String query = "SELECT * FROM alumlist";
+    	 Cursor cur = mDb.rawQuery(query, null);
+    	 int oldNote = 0;
+    	 if(cur.moveToFirst()){
+    		 do{
+    			 ListData list = new ListData();
+    			 
+    			 int currentNote = cur.getInt(1);
+    			 if(currentNote != oldNote){
+    				 list.setIsHeader(true);
+    				 
+    				 list.setID(cur.getInt(0));
+        			 list.setNotation(cur.getInt(1));
+        			 list.setName(cur.getString(2));
+        			 list.setMobile(cur.getString(3));
+        			 list.setCompany(cur.getString(4));
+        			 list.setEmail(cur.getString(7));
+        			 retList.add(list);
+        			 
+        			 oldNote = currentNote;
+        			 cur.moveToPrevious();
+    			 }else{
+    				 
+    				 list.setIsHeader(false);
+    				 
+    				 list.setID(cur.getInt(0));
+        			 list.setNotation(cur.getInt(1));
+        			 list.setName(cur.getString(2));
+        			 list.setMobile(cur.getString(3));
+        			 list.setCompany(cur.getString(4));
+        			 list.setEmail(cur.getString(7));
+        			 retList.add(list);
+        			 
+        			 
+    				 
+    			 }
+    			 
+    			 
+    		 } while (cur.moveToNext());
+    		 
+    	 }
+    	 
+    	 
+    	 return retList;
+     }
+     
      public ArrayList<ListData> getSearchList(String keyword){
     	 ArrayList<ListData> retList = new ArrayList<ListData>();
     	 
