@@ -26,6 +26,9 @@ public class DetailActivity extends Activity {
 
 	private boolean isBookmarked;
 	
+	
+	
+	private Button btnBookmark;
 	@Override
 	public void onCreate(Bundle sis){
 		super.onCreate(sis);
@@ -177,7 +180,7 @@ public class DetailActivity extends Activity {
 			}
 		});
 		
-		Button btnBookmark = (Button)findViewById(R.id.btn_bookmark);
+		btnBookmark = (Button)findViewById(R.id.btn_bookmark);
 		btnBookmark.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -193,6 +196,7 @@ public class DetailActivity extends Activity {
 		
 		if(BMList.contains(""+data.getID())){
 			btnBookmark.setBackgroundResource(R.drawable.btn_bookmark_on);
+			isBookmarked = true;
 		}
 		
 		
@@ -229,19 +233,31 @@ public class DetailActivity extends Activity {
 	
 	
 	private void setBookmark(){
+	
+		if(isBookmarked){
+			
+			BMList.remove(""+data.getID());
+			
+			btnBookmark.setBackgroundResource(R.drawable.btn_bookmark_off);
+			isBookmarked = false;
+		}else{
+			
+			BMList.add(""+data.getID());
+			btnBookmark.setBackgroundResource(R.drawable.btn_bookmark_on);
+			isBookmarked = true;
+		}
 		
-		
-		
+		abc.saveBookMarkData(BMList);		
 	}
 	
 	
-	private boolean checkBookmark(){
-		boolean retVal = false;
-		
-	
-		
-		return retVal;
-	}
+//	private boolean checkBookmark(){
+//		boolean retVal = false;
+//		
+//	
+//		
+//		return retVal;
+//	}
 	
 	@Override
 	public void onBackPressed(){

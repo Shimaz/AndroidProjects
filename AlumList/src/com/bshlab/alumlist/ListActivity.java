@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,38 +24,80 @@ public class ListActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
-		setContentView(R.layout.layout_list);
 		
-		/*
-		 * Initailize DB 
-		 */
-		
-		dbAdapter = new DBAdapter(this);
-		
-		dbAdapter.createDatabase();
-		dbAdapter.open();
-		
-		allList = new ArrayList<ListData>();
-		allList = dbAdapter.getAllList();
-		
-		dbAdapter.close();
-		
-		
-		
-		/*
-		 * Initialize ListView
-		 */
-		
+		SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
+		boolean isCertified = settings.getBoolean("cert", false);
+		if(isCertified){
+			setContentView(R.layout.layout_list);
+			
+			/*
+			 * Initailize DB 
+			 */
+			
+			dbAdapter = new DBAdapter(this);
+			
+			dbAdapter.createDatabase();
+			dbAdapter.open();
+			
+			allList = new ArrayList<ListData>();
+			allList = dbAdapter.getAllList();
+			
+			dbAdapter.close();
+			
+			
+			
+			/*
+			 * Initialize ListView
+			 */
+			
 
-		lvList = (ListView)findViewById(R.id.lv_list_all);
-		final Runnable updateUI = new Runnable(){
-			public void run(){
-				ListActivity.this.listAdapter.notifyDataSetChanged();
-			}
-		};
+			lvList = (ListView)findViewById(R.id.lv_list_all);
+			final Runnable updateUI = new Runnable(){
+				public void run(){
+					ListActivity.this.listAdapter.notifyDataSetChanged();
+				}
+			};
+			
+			listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
+			lvList.setAdapter(listAdapter);
+			
+			Button btnSearch = (Button)findViewById(R.id.btn_search);
+			btnSearch.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					
+					EditText et = (EditText)findViewById(R.id.et_search);
+					String keyword = et.getText().toString();
+					ArrayList<ListData> tmpList = new ArrayList<ListData>();
+				
+					
+					
+					dbAdapter.open();
+
+					tmpList = dbAdapter.getSearchList(keyword);
+					listAdapter = new ListAdapterWithSection(getApplicationContext(), R.layout.list_row, R.layout.list_section, tmpList);
+					dbAdapter.close();
+					lvList.setAdapter(listAdapter);
+					updateUI.run();
+					
+				}
+			});
+			
+			
+		}else{
+			
+			setContentView(R.layout.layout_list_no_cert);
+			
+			
+		}
 		
-		listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
-		lvList.setAdapter(listAdapter);
+		
+		
+		
+		
+		
 		/*
 		 * menu button setup
 		 */
@@ -70,30 +113,7 @@ public class ListActivity extends Activity {
 		
 
 		
-		Button btnSearch = (Button)findViewById(R.id.btn_search);
-		btnSearch.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				EditText et = (EditText)findViewById(R.id.et_search);
-				String keyword = et.getText().toString();
-				ArrayList<ListData> tmpList = new ArrayList<ListData>();
-			
-				
-				
-				dbAdapter.open();
-
-				tmpList = dbAdapter.getSearchList(keyword);
-				listAdapter = new ListAdapterWithSection(getApplicationContext(), R.layout.list_row, R.layout.list_section, tmpList);
-				dbAdapter.close();
-				lvList.setAdapter(listAdapter);
-				updateUI.run();
-				
-			}
-		});
-		
+	
 		
 		
 		

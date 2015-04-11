@@ -1,21 +1,79 @@
 package com.bshlab.alumlist;
 
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.TextView;
 
 public class BookmarkActivity extends Activity {
+	private DBAdapter dbAdapter;
+	private ArrayList<ListData> bookmarkedList;
+	private ListView lvList;
 	
+	private ListAdapter listAdapter;
+
+	private Runnable updateUI;
 	
 	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
-		setContentView(R.layout.layout_bookmark);
+		
+		SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
+		boolean isCertified = settings.getBoolean("cert", false);
+		if(isCertified){
+			setContentView(R.layout.layout_bookmark);
+			
+			
+			/*
+			 * Initailize DB 
+			 */
+			
+			dbAdapter = new DBAdapter(this);
+			
+			dbAdapter.createDatabase();
+			dbAdapter.open();
+			
+			bookmarkedList = new ArrayList<ListData>();
+			bookmarkedList = dbAdapter.getBookmarkList();
+			
+			dbAdapter.close();
+			
+			lvList = (ListView)findViewById(R.id.lv_list_bookmark);
+			if(bookmarkedList.size() == 0){
+				lvList.setVisibility(View.GONE);
+			}else{
+				TextView tvNodata = (TextView)findViewById(R.id.tv_no_data);
+				tvNodata.setVisibility(View.GONE);
+			}
+			
+			
+			updateUI = new Runnable(){
+				public void run(){
+					BookmarkActivity.this.listAdapter.notifyDataSetChanged();
+				}
+			};
+			
+			listAdapter = new ListAdapter(this, R.layout.list_row, bookmarkedList);
+			lvList.setAdapter(listAdapter);
+			
+			
+			
+			
+		}else{
+			
+			
+			setContentView(R.layout.layout_bookmark_no_cert);
+			
+		}
 		
 		
 		/*
@@ -30,6 +88,9 @@ public class BookmarkActivity extends Activity {
 		
 		Button btnSettings = (Button)findViewById(R.id.btn_settings);
 		btnSettings.setOnClickListener(menuListener);
+	
+		
+		
 		
 	}
 	
@@ -84,6 +145,39 @@ public class BookmarkActivity extends Activity {
 			
 		}
 	};
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		
+		SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
+		boolean isCertified = settings.getBoolean("cert", false);
+		if(isCertified){
+			dbAdapter.open();
+			
+			bookmarkedList = new ArrayList<ListData>();
+			bookmarkedList = dbAdapter.getBookmarkList();
+			
+			dbAdapter.close();
+			
+			listAdapter = new ListAdapter(this, R.layout.list_row, bookmarkedList);
+			lvList.setAdapter(listAdapter);
+	
+			if(bookmarkedList.size() == 0){
+				lvList.setVisibility(View.GONE);
+				TextView tvNodata = (TextView)findViewById(R.id.tv_no_data);
+				tvNodata.setVisibility(View.VISIBLE);
+				
+			}else{
+				TextView tvNodata = (TextView)findViewById(R.id.tv_no_data);
+				tvNodata.setVisibility(View.GONE);
+				lvList.setVisibility(View.VISIBLE);
+			}
+			
+			updateUI.run();
+		}
+		
+	}
 	
 
 }

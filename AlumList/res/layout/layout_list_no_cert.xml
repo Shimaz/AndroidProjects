@@ -14,43 +14,32 @@
         android:background="#59B0D6">
         <TextView
             android:id="@+id/tv_title"
-            android:text="@string/title_bookmark"
+            android:text="@string/title_list"
             android:textSize="20sp"
+            android:textColor="#FFF"
             android:layout_height="45dp"
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:textColor="#ffffff"
             ></TextView>
         
         
     </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_no_data"
+  
+            <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:textSize="13sp"
             android:textColor="#bbbbbb"
-            android:text="@string/msg_nodata"
+            android:text="@string/cert_no_cert"
             >
             
         </TextView>
     
-    <ListView 
-        android:id="@+id/lv_list_bookmark"
-        android:layout_below="@+id/rl_title_bar"
-        android:layout_above="@+id/ll_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fastScrollEnabled="true"
-        android:scrollbars="none">
-        
-    </ListView>
     
-
     <LinearLayout 
-       	android:id="@+id/ll_menu"
+        	android:id="@+id/ll_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"
@@ -81,16 +70,15 @@
                 android:layout_height="wrap_content"
                 >
                 
-                
-                
-                <Button
-                    android:id="@+id/btn_list"
+                <ImageView
+                    
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:background="@drawable/btn_list"
-                    android:layout_gravity="center_horizontal|center_vertical">
+                    android:background="@drawable/btn_list_push"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:contentDescription="@string/desc">
                     
-                </Button>
+                </ImageView>
                 
                 
             </LinearLayout>
@@ -99,15 +87,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 
-                <ImageView
-                    
+                <Button
+                    android:id="@+id/btn_bookmark"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:background="@drawable/btn_bookmark_push"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:contentDescription="@string/desc">
+                    android:background="@drawable/btn_bookmark"
+                    android:layout_gravity="center_horizontal|center_vertical">
                     
-                </ImageView>
+                </Button>
                 
                 
             </LinearLayout>

@@ -158,46 +158,23 @@ public class DBAdapter
      public ArrayList<ListData> getBookmarkList(){
     	 ArrayList<ListData> retList = new ArrayList<ListData>();
     	 
-    	 String query = "SELECT * FROM alumlist";
-    	 Cursor cur = mDb.rawQuery(query, null);
-    	 int oldNote = 0;
-    	 if(cur.moveToFirst()){
-    		 do{
-    			 ListData list = new ListData();
-    			 
-    			 int currentNote = cur.getInt(1);
-    			 if(currentNote != oldNote){
-    				 list.setIsHeader(true);
-    				 
-    				 list.setID(cur.getInt(0));
-        			 list.setNotation(cur.getInt(1));
-        			 list.setName(cur.getString(2));
-        			 list.setMobile(cur.getString(3));
-        			 list.setCompany(cur.getString(4));
-        			 list.setEmail(cur.getString(7));
-        			 retList.add(list);
-        			 
-        			 oldNote = currentNote;
-        			 cur.moveToPrevious();
-    			 }else{
-    				 
-    				 list.setIsHeader(false);
-    				 
-    				 list.setID(cur.getInt(0));
-        			 list.setNotation(cur.getInt(1));
-        			 list.setName(cur.getString(2));
-        			 list.setMobile(cur.getString(3));
-        			 list.setCompany(cur.getString(4));
-        			 list.setEmail(cur.getString(7));
-        			 retList.add(list);
-        			 
-        			 
-    				 
-    			 }
-    			 
-    			 
-    		 } while (cur.moveToNext());
-    		 
+    	 ABClass abc = (ABClass)mContext.getApplicationContext();
+    	 ArrayList<String>bml = new ArrayList<String>();
+    	 bml = abc.getBookMarkData();
+    	 
+    	 for(int i = 0; i < bml.size(); i++){
+    		 String qq = "SELECT * FROM alumlist where ID="+bml.get(i);
+    		 Cursor cc = mDb.rawQuery(qq, null);
+    		 cc.moveToFirst();
+    		 ListData dd = new ListData();
+    		 dd.setID(cc.getInt(0));
+			 dd.setNotation(cc.getInt(1));
+			 dd.setName(cc.getString(2));
+			 dd.setMobile(cc.getString(3));
+			 dd.setCompany(cc.getString(4));
+			 dd.setEmail(cc.getString(7));
+			 retList.add(dd);
+			 
     	 }
     	 
     	 

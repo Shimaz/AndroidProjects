@@ -26,28 +26,17 @@
     </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_no_data"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_centerInParent="true"
             android:textSize="13sp"
             android:textColor="#bbbbbb"
-            android:text="@string/msg_nodata"
+            android:text="@string/cert_no_cert"
             >
             
         </TextView>
     
-    <ListView 
-        android:id="@+id/lv_list_bookmark"
-        android:layout_below="@+id/rl_title_bar"
-        android:layout_above="@+id/ll_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fastScrollEnabled="true"
-        android:scrollbars="none">
-        
-    </ListView>
-    
+
 
     <LinearLayout 
        	android:id="@+id/ll_menu"

@@ -104,7 +104,9 @@ public class ListAdapter extends ArrayAdapter<ListData> implements SectionIndexe
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 				
-					android.util.Log.i("shimaz", "list click");
+					Intent intent = new Intent(context, DetailActivity.class);
+					intent.putExtra("id", data.getID());
+					context.startActivity(intent);
 				}
 			});
 			
