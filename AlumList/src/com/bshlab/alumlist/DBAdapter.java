@@ -7,7 +7,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.util.Log;
 
 public class DBAdapter 
@@ -230,6 +229,21 @@ public class DBAdapter
     	 
     	 return retList;
     	 
+     }
+     
+     
+     public boolean getCertification(int notation, String name, String pw){
+    	 boolean retVal = false;
+    	 
+    	 
+    	 String qq = "SELECT * FROM alumlist where notation=" + notation + " and name=\"" + name + "\" and pw1=\"" + pw.charAt(0) + "\" and pw2=\"" + pw.charAt(1) +"\" and pw3=\"" + pw.charAt(2) + "\" and pw4=\"" + pw.charAt(3) + "\" and pw5=\"" + pw.charAt(4) +"\" and pw6=\"" + pw.charAt(5) +"\"";    
+		 Cursor cc = mDb.rawQuery(qq, null);
+		 cc.moveToFirst();
+		
+		 if(cc.getCount() > 0) retVal = true;
+    	 
+    	 
+    	 return retVal;
      }
      
      

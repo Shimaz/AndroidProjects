@@ -1,19 +1,42 @@
 package com.bshlab.alumlist;
 
+import java.io.File;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
+	
+	private ABClass abc;
 	
 	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
 		setContentView(R.layout.layout_settings);
+		abc = (ABClass)getApplicationContext();
+		
+		Button btnCert = (Button)findViewById(R.id.btn_cert);
+		btnCert.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Intent intent = new Intent(SettingsActivity.this, CertifyActivity.class);
+				startActivity(intent);
+				
+				
+			}
+		});
+		
+		
 		
 		/*
 		 * menu button setup
@@ -28,6 +51,10 @@ public class SettingsActivity extends Activity {
 		Button btnBookmark = (Button)findViewById(R.id.btn_bookmark);
 		btnBookmark.setOnClickListener(menuListener);
 	}
+	
+	
+	
+	
 	
 	
 	/*
@@ -81,5 +108,36 @@ public class SettingsActivity extends Activity {
 		}
 	};
 	
+	
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		
+		String path = abc.getSSUFilePath();
+		
+		File file = new File(path +"ssu.cert");
+		boolean isCertified = false;
+		
+		if(file.exists()) isCertified = true;
+		
+		if(isCertified){
+			TextView tv = (TextView)findViewById(R.id.tv_cert_don);
+			tv.setVisibility(View.VISIBLE);
+			
+			Button btn = (Button)findViewById(R.id.btn_cert);
+			btn.setVisibility(View.GONE);
+			
+		}else{
+			TextView tv = (TextView)findViewById(R.id.tv_cert_don);
+			tv.setVisibility(View.GONE);
+			
+			Button btn = (Button)findViewById(R.id.btn_cert);
+			btn.setVisibility(View.VISIBLE);
+			
+		}
+		
+		
+	}
 
 }

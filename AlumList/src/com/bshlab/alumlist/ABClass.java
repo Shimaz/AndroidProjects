@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
-import android.content.SharedPreferences;
 
 @SuppressLint("SdCardPath")
 public class ABClass extends Application {
@@ -113,4 +112,12 @@ public class ABClass extends Application {
 		}
 		return retVal;
 	}
+	
+	public String getSSUFilePath(){
+		return filePath;
+	}
+
+
+
+
 }

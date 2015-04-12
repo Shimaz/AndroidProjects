@@ -7,11 +7,105 @@
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:textSize="18sp"
+        android:textSize="25sp"
         android:text="@string/cert_title"
         android:textColor="#333"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
         />
+
     
+    <LinearLayout
+        android:id="@+id/ll_input"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        >
+        
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:text="@string/cert_notation"
+				/>
+            <EditText 
+                android:id="@+id/et_notation"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:inputType="number"
+                android:maxLines="1"/>
+            
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:text="@string/cert_name"
+                android:paddingLeft="20dp"
+				/>
+            
+            <EditText 
+                android:id="@+id/et_name"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:inputType="text"
+                android:maxLines="1"/>
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:text="@string/cert_number"
+                android:paddingLeft="20dp"
+				/>
+            
+            <EditText 
+                android:id="@+id/et_number"
+                android:layout_width="216dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:inputType="number"
+                android:maxLines="1"/>
+            
+            
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    
+    <Button 
+        android:id="@+id/btn_check_cert"
+        android:text="@string/cert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"></Button>
 
 </RelativeLayout>

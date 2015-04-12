@@ -15,7 +15,7 @@
     <string name="title_detail">동문 상세 정보</string>
     
     
-    
+    <string name="cert_button">인증하기</string>
     <string name="cert_title">동문 인증</string>
     <string name="cert_notation">기수</string>
     <string name="cert_name">성명</string>

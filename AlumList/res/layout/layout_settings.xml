@@ -26,6 +26,19 @@
     </RelativeLayout>
 
     
+    <Button
+        android:id="@+id/btn_cert"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/cert_button"
+        android:layout_centerInParent="true"></Button>
+    
+    <TextView
+        android:id="@+id/tv_cert_don"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/cert_done"
+        android:layout_centerInParent="true"></TextView>
     
     <LinearLayout 
             android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.bshlab.alumlist;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -20,13 +21,20 @@ public class ListActivity extends Activity {
 	
 	private ListAdapterWithSection listAdapter;
 
+	private ABClass abc;
 	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
 		
-		SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
-		boolean isCertified = settings.getBoolean("cert", false);
+		abc = (ABClass)getApplicationContext();
+		String path = abc.getSSUFilePath();
+		
+		File file = new File(path +"ssu.cert");
+		boolean isCertified = false;
+		
+		if(file.exists()) isCertified = true;
+		
 		if(isCertified){
 			setContentView(R.layout.layout_list);
 			

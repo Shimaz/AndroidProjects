@@ -1,6 +1,5 @@
 package com.bshlab.alumlist;
 
-import android.graphics.Bitmap;
 
 
 
