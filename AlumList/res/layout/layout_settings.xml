@@ -25,22 +25,61 @@
         
     </RelativeLayout>
 
-    
-    <Button
-        android:id="@+id/btn_cert"
+    <TextView 
+        android:id="@+id/tv_settings_info"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/cert_button"
-        android:layout_centerInParent="true"></Button>
+        android:layout_margin="20dp"
+        android:layout_below="@+id/rl_title_bar"
+        android:textSize="17sp"
+        android:textColor="#222"
+        android:text="@string/settings_info"
+        />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_no_cert"
+        android:orientation="vertical"
+        android:layout_below="@+id/tv_settings_info"
+        android:layout_margin="20dp">
+        
+        <TextView
+            android:layout_height="wrap_content"
+        	android:layout_width="wrap_content"
+        	android:textColor="#000"
+        	android:textSize="15sp"
+        	android:text="@string/settings_no_cert"
+        	/>
+        
+        <Button
+	        android:id="@+id/btn_cert"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:text="@string/cert_button"
+	        style="@android:style/Widget.Holo.Button"
+	        android:layout_marginTop="10dp"
+	        />
+    
+        
+    </LinearLayout>
+    
     
     <TextView
         android:id="@+id/tv_cert_don"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/cert_done"
-        android:layout_centerInParent="true"></TextView>
+        android:text="@string/settings_cert_done"
+        android:textColor="#000"
+       	android:textSize="15sp"
+        android:layout_below="@+id/tv_settings_info"
+        android:layout_margin="20dp"
+		/> 
+    
+    
     
     <LinearLayout 
+        	android:id="@+id/ll_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="4"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SSU_Health</string>
+    <string name="app_name">SNU Health</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="desc">content description</string>
@@ -23,7 +23,11 @@
     
     <string name="cert_complete">인증이 완료되었습니다</string>
 	<string name="cert_done">인증됨</string>
-	<string name="cert_no_cert">미인증</string>
+	<string name="cert_no_cert">미인증\n설정 화면에서 인증 후\n사용하실 수 있습니다</string>
+	
+	<string name="settings_info">동문 인증 문의: 02-xxx-xxxx\n정보 수정 문의: 02-xxx-xxxx\n버그 리포트: snu.health.app@gmail.com\n기타 문의 및 의견: xxx@ssu.ac.kr</string>
+	<string name="settings_no_cert">동문인증이 되지 않았습니다</string>
+	<string name="settings_cert_done">동문 인증이 되어있습니다</string>
 	
 	<string name="ok">확인</string>
 	<string name="cancel">취소</string>

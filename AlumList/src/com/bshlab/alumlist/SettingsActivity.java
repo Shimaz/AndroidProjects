@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SettingsActivity extends Activity {
@@ -125,15 +126,21 @@ public class SettingsActivity extends Activity {
 			TextView tv = (TextView)findViewById(R.id.tv_cert_don);
 			tv.setVisibility(View.VISIBLE);
 			
-			Button btn = (Button)findViewById(R.id.btn_cert);
-			btn.setVisibility(View.GONE);
+			
+			LinearLayout ll = (LinearLayout)findViewById(R.id.ll_no_cert);
+			ll.setVisibility(View.GONE);
+//			Button btn = (Button)findViewById(R.id.btn_cert);
+//			btn.setVisibility(View.GONE);
 			
 		}else{
 			TextView tv = (TextView)findViewById(R.id.tv_cert_don);
 			tv.setVisibility(View.GONE);
 			
-			Button btn = (Button)findViewById(R.id.btn_cert);
-			btn.setVisibility(View.VISIBLE);
+			
+			LinearLayout ll = (LinearLayout)findViewById(R.id.ll_no_cert);
+			ll.setVisibility(View.VISIBLE);
+//			Button btn = (Button)findViewById(R.id.btn_cert);
+//			btn.setVisibility(View.VISIBLE);
 			
 		}
 		
