@@ -4,11 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,11 +22,19 @@ public class ListActivity extends Activity {
 	
 	private ListAdapterWithSection listAdapter;
 
+//	private ListAdapter la;
+	
 	private ABClass abc;
+	
+	private InputMethodManager imm;
+	
+	private Runnable updateUI;
 	
 	@Override
 	protected void onCreate(Bundle sis){
 		super.onCreate(sis);
+		
+		imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		
 		abc = (ABClass)getApplicationContext();
 		String path = abc.getSSUFilePath();
@@ -60,7 +69,7 @@ public class ListActivity extends Activity {
 			
 
 			lvList = (ListView)findViewById(R.id.lv_list_all);
-			final Runnable updateUI = new Runnable(){
+			updateUI = new Runnable(){
 				public void run(){
 					ListActivity.this.listAdapter.notifyDataSetChanged();
 				}
@@ -68,6 +77,9 @@ public class ListActivity extends Activity {
 			
 			listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
 			lvList.setAdapter(listAdapter);
+			
+//			la = new ListAdapter(this, R.layout.list_row, allList);
+//			lvList.setAdapter(la);
 			
 			Button btnSearch = (Button)findViewById(R.id.btn_search);
 			btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -78,18 +90,11 @@ public class ListActivity extends Activity {
 					
 					EditText et = (EditText)findViewById(R.id.et_search);
 					String keyword = et.getText().toString();
-					ArrayList<ListData> tmpList = new ArrayList<ListData>();
-				
 					
 					
-					dbAdapter.open();
-
-					tmpList = dbAdapter.getSearchList(keyword);
-					listAdapter = new ListAdapterWithSection(getApplicationContext(), R.layout.list_row, R.layout.list_section, tmpList);
-					dbAdapter.close();
-					lvList.setAdapter(listAdapter);
-					updateUI.run();
+					imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
 					
+					updateList(keyword);
 				}
 			});
 			
@@ -129,6 +134,31 @@ public class ListActivity extends Activity {
 	
 	
 	
+	
+	private void updateList(String str){
+		
+		
+		
+//		ArrayList<ListData> tmpList = new ArrayList<ListData>();
+		
+		
+		allList = new ArrayList<ListData>();
+		
+		
+		dbAdapter.open();
+		allList = dbAdapter.getSearchList(str);
+		dbAdapter.close();
+		
+		listAdapter = new ListAdapterWithSection(this, R.layout.list_row, R.layout.list_section, allList);
+		lvList.setAdapter(listAdapter);
+		
+
+		updateUI.run();
+		
+//		listAdapter.notifyDataSetChanged();
+		
+		
+	}
 	
 	
 	

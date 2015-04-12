@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -158,8 +157,13 @@ public class BookmarkActivity extends Activity {
 	public void onResume(){
 		super.onResume();
 		
-		SharedPreferences settings = this.getPreferences(MODE_PRIVATE);
-		boolean isCertified = settings.getBoolean("cert", false);
+		String path = abc.getSSUFilePath();
+		
+		File file = new File(path +"ssu.cert");
+		boolean isCertified = false;
+		
+		if(file.exists()) isCertified = true;
+		
 		if(isCertified){
 			dbAdapter.open();
 			

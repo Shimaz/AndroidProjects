@@ -120,6 +120,7 @@ public class ListAdapterWithSection extends ArrayAdapter<ListData> implements Se
 						
 						Intent intent = new Intent(context, DetailActivity.class);
 						intent.putExtra("id", data.getID());
+						
 						context.startActivity(intent);
 						
 						
